@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   openshift-secured-app:
   - apiVersion: v2
-    created: "2023-07-11T20:15:38.6490786-03:00"
+    created: "2023-07-11T20:32:25.5635118-03:00"
     description: A secured version of an APP for OpenShift
     digest: 3120a50fde4a0210db98eeb84a5675c20c110bb459b334638a2de79adc9afb90
     home: https://github.com/eximiait/charts
@@ -21,7 +21,30 @@ entries:
     version: 0.1.0
   openshift-secured-redisInsight:
   - apiVersion: v2
-    created: "2023-07-11T20:15:38.65237-03:00"
+    created: "2023-07-11T20:32:25.5675102-03:00"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.1.0
+    description: A secured version of RedisInsight for OpenShift
+    digest: c95155c8ef02bb6e303f2757218670fa69ff4047c104ffdaebb26580f8987d17
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-redisInsight
+    type: application
+    urls:
+    - openshift-secured-redisInsight-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    created: "2023-07-11T20:32:25.566513-03:00"
     description: A secured version of RedisInsight for OpenShift
     digest: 1de45f800d7cf49de511f6332779e287be668dd74f26d09b9742f0547e9e936a
     home: https://github.com/eximiait/charts
@@ -39,7 +62,7 @@ entries:
     - openshift-secured-redisInsight-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v2
-    created: "2023-07-11T20:15:38.6507028-03:00"
+    created: "2023-07-11T20:32:25.5645123-03:00"
     description: A secured version of RedisInsight for OpenShift
     digest: bfbdffbd89303d1a07141a428b476ea42fdd2e856379782d7a4304302d3527ae
     name: openshift-secured-redisInsight
@@ -47,4 +70,4 @@ entries:
     urls:
     - openshift-secured-redisInsight-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-11T20:15:38.6485164-03:00"
+generated: "2023-07-11T20:32:25.5605111-03:00"
