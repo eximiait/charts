@@ -1,5 +1,0 @@
-apiVersion: v2
-description: A secured version of RedisInsight for OpenShift
-name: openshift-secured-redisInsight
-type: application
-version: 0.1.0
