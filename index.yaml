@@ -2,7 +2,25 @@ apiVersion: v1
 entries:
   openshift-secured-redisInsight:
   - apiVersion: v2
-    created: "2023-07-11T15:33:06.1574424-03:00"
+    created: "2023-07-11T17:50:07.3360874-03:00"
+    description: A secured version of RedisInsight for OpenShift
+    digest: 1de45f800d7cf49de511f6332779e287be668dd74f26d09b9742f0547e9e936a
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/charts/openshift-secured-redisInsight
+    type: application
+    urls:
+    - openshift-secured-redisInsight-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    created: "2023-07-11T17:50:07.3350892-03:00"
     description: A secured version of RedisInsight for OpenShift
     digest: bfbdffbd89303d1a07141a428b476ea42fdd2e856379782d7a4304302d3527ae
     name: openshift-secured-redisInsight
@@ -10,4 +28,4 @@ entries:
     urls:
     - openshift-secured-redisInsight-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-11T15:33:06.1519507-03:00"
+generated: "2023-07-11T17:50:07.3335724-03:00"
