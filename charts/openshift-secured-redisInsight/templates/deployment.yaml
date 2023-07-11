@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "redisinsight-chart.fullname" . }}
+  labels:
+    {{- include "redisinsight-chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: proxy
+      {{- include "redisinsight-chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: proxy
+        {{- include "redisinsight-chart.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: proxy
+      volumes:
+        - name: db
+          emptyDir: {}
+        - name: proxy-tls
+          secret:
+            secretName: proxy-tls
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8001
+              protocol: TCP
+          env:
+            - name: RITRUSTEDORIGINS
+              value: https://{{ .Values.route.host }}
+          livenessProbe:
+            httpGet:
+              path: /healthcheck/
+              port: 8001
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 2
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: db
+              mountPath: /db
+        - name: oauth-proxy
+          image: quay.io/openshift/origin-oauth-proxy:4.6 # se elige la 4.6 porque es la única (hasta la 4.14) que no tiene vulnerabilidades encontradas.
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8443
+              name: public
+          args:
+            - --https-address=:8443
+            - --provider=openshift
+            - --openshift-service-account=proxy
+            - --upstream=http://localhost:8001
+            - --tls-cert=/etc/tls/private/tls.crt
+            - --tls-key=/etc/tls/private/tls.key
+            - --cookie-secret=xj0f1185OQ86tI5Hg2d_rJ687Y54QpwXqVY0GVvSEhE=
+            {{- if .Values.rbac.namespaced}}
+            - --openshift-sar={"namespace":{{ $.Release.Namespace | quote }},"resource":"services","resourceName":"proxy","verb":"get"}
+            {{- end}}
+            {{- with .Values.proxyExtraEnv }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          volumeMounts:
+            - mountPath: /etc/tls/private
+              name: proxy-tls
