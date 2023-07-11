@@ -1,26 +1,29 @@
-replicaCount: 1
+base:
+  nameOverride: "redisinsight"
+  fullnameOverride: "redisinsight"
+  extraVolumes: 
+    - name: db
+      emptyDir: {}
+  extraContainers:
+    - name: app
+      image: "redislabs/redisinsight:1.14.0"
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: http
+          containerPort: 8001
+          protocol: TCP
+      livenessProbe:
+        httpGet:
+          path: /healthcheck/
+          port: 8001
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        failureThreshold: 2
+      resources: {}
+      volumeMounts:
+        - name: db
+          mountPath: /db
 
-image:
-  repository: redislabs/redisinsight
-  pullPolicy: IfNotPresent
-  tag: 1.14.0
+  upstream: http://localhost:8001
 
-nameOverride: ""
-fullnameOverride: ""
-
-resources: {}
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
-
-rbac:
-  namespaced: false # true habilita para que solamente se pueda acceder desde el namespace en el que se encuentra instalado
-
-proxyExtraEnv: []
-#   - --openshift-sar='{"namespace":"redis-insight","resource":"services","resourceName":"proxy","verb":"GET"}'
-
-route:
-  host: changeme.org
+  cookieSecret: "bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="
