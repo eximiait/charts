@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "openshift-secured-app-chart.fullname" . }}
+  labels:
+    {{- include "openshift-secured-app-chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: proxy
+      {{- include "openshift-secured-app-chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: proxy
+        {{- include "openshift-secured-app-chart.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: proxy
+      volumes:
+        - name: proxy-tls
+          secret:
+            secretName: proxy-tls
+        {{ with .Values.extraVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{ with .Values.initContainers}} 
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: oauth-proxy
+          image: "{{ .Values.proxy.image.repository }}:{{ .Values.proxy.image.tag }}"
+          imagePullPolicy: {{ .Values.proxy.image.pullPolicy }}
+          ports:
+            - containerPort: 8443
+              name: public
+          args:
+            - --https-address=:8443
+            - --provider=openshift
+            - --openshift-service-account=proxy
+            - --upstream= {{ .Values.upstream }}
+            - --tls-cert=/etc/tls/private/tls.crt
+            - --tls-key=/etc/tls/private/tls.key
+            - --cookie-secret={{ .Values.cookieSecret }}
+            {{- if .Values.rbac.namespaced}}
+            - --openshift-sar={"namespace":{{ $.Release.Namespace | quote }},"resource":"services","resourceName":"proxy","verb":"get"}
+            {{- end}}
+            {{- with .Values.proxyExtraEnv }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          volumeMounts:
+            - mountPath: /etc/tls/private
+              name: proxy-tls
+        {{ with .Values.extraContainers }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}

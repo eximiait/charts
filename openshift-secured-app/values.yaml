@@ -1,0 +1,40 @@
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+proxy:
+  image:
+    repository: quay.io/openshift/origin-oauth-proxy
+    pullPolicy: IfNotPresent
+    tag: 4.6 # se elige la 4.6 porque es la única (hasta la 4.14) que no tiene vulnerabilidades encontradas.
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+initContainers: []
+  # - name: init
+  #   image: busybox
+  #   command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+
+extraVolumes: []
+
+extraContainers: []
+
+upstream: http://localhost:8080
+
+cookieSecret: "changeme" # dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64 | tr -d -- '\n' | tr -- '+/' '-_'; echo
+
+rbac:
+  namespaced: false # true habilita para que solamente se pueda acceder desde el namespace en el que se encuentra instalado
+
+proxyExtraEnv: []
+#   - --openshift-sar='{"namespace":"redis-insight","resource":"services","resourceName":"proxy","verb":"GET"}'
+
+route:
+  host: changeme.org

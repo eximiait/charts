@@ -1,0 +1,39 @@
+nameOverride: "app"
+fullnameOverride: "app"
+
+extraVolumes: 
+  - name: db
+    emptyDir: {}
+
+extraContainers:
+  - name: app
+    image: "quay.io/eximiait/openshift-secured-app:latest"
+    imagePullPolicy: IfNotPresent
+    ports:
+      - name: http
+        containerPort: 8001
+        protocol: TCP
+    livenessProbe:
+      httpGet:
+        path: /healthcheck/
+        port: 8001
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      failureThreshold: 2
+    resources: {}
+    volumeMounts:
+      - name: db
+        mountPath: /db
+
+upstream: http://localhost:8080
+
+cookieSecret: "SECRET"
+
+rbac:
+  namespaced: false
+
+proxyExtraEnv:
+  - --openshift-sar='{"namespace":"redis-insight","resource":"services","resourceName":"proxy","verb":"GET"}'
+
+route:
+  host: app.org

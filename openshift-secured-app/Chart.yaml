@@ -1,0 +1,14 @@
+apiVersion: v2
+description: A secured version of an APP for OpenShift
+name: openshift-secured-app
+type: application
+version: 0.1.0
+keywords:
+  - openshift, oauth-proxy
+home: https://github.com/eximiait/charts
+sources:
+  - https://github.com/eximiait/charts/tree/main/openshift-secured-app
+maintainers:
+  - name: eximiait
+    email: info.eximia.it@gmail.com
+    url: https://www.eximiait.com.ar
