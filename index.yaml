@@ -1,6 +1,29 @@
 apiVersion: v1
 entries:
   openshift-secured-app:
+  - annotations:
+      artifacthub.io/changes: "- description: Refactor extraContainers to containers
+        and extraVolumes to volumes\n  kind: changed\n  version: 0.2.0\n  links:\n
+        \   - name: GitHub Issue\n      url: https://github.com/eximiait/charts/issues/4
+        \       "
+    apiVersion: v2
+    created: "2023-07-12T17:36:04.599927981Z"
+    description: A secured version of an APP for OpenShift
+    digest: 247981a5c80e0add517c6e3b190a2369bdb500d010095f874f3fb2009f259bbb
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth-proxy
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-app
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-app
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-app-0.2.0/openshift-secured-app-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     created: "2023-07-11T20:32:25.5635118-03:00"
     description: A secured version of an APP for OpenShift
@@ -70,4 +93,4 @@ entries:
     urls:
     - openshift-secured-redisInsight-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-11T20:32:25.5605111-03:00"
+generated: "2023-07-12T17:36:04.599946381Z"
