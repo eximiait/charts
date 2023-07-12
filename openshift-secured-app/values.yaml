@@ -22,9 +22,9 @@ initContainers: []
   #   image: busybox
   #   command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
 
-extraVolumes: []
+volumes: []
 
-extraContainers: []
+containers: []
 
 upstream: http://localhost:8080
 

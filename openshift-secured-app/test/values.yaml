@@ -1,11 +1,11 @@
 nameOverride: "app"
 fullnameOverride: "app"
 
-extraVolumes: 
+volumes: 
   - name: db
     emptyDir: {}
 
-extraContainers:
+containers:
   - name: app
     image: "quay.io/eximiait/openshift-secured-app:latest"
     imagePullPolicy: IfNotPresent

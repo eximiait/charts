@@ -21,7 +21,7 @@ spec:
         - name: proxy-tls
           secret:
             secretName: proxy-tls
-        {{ with .Values.extraVolumes }}
+        {{ with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
       {{ with .Values.initContainers}} 
@@ -52,6 +52,6 @@ spec:
           volumeMounts:
             - mountPath: /etc/tls/private
               name: proxy-tls
-        {{ with .Values.extraContainers }}
+        {{ with .Values.containers }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
