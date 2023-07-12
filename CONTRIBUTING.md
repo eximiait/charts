@@ -1,6 +1,6 @@
 # Contributing
 
-EximiaIT is a collection of **community maintained** charts.
+*EximiaIT charts* is a collection of **community maintained** charts.
 
 
 ## Versioning
