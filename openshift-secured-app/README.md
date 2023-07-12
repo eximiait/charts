@@ -1,13 +1,13 @@
 # Openshift Secured App
 
-Este chart sirve para *segurizar* un container con openshift oauth-proxy.
+Este chart sirve para *segurizar* una aplicación con openshift oauth-proxy.
 
 # Uso
 
 - Agregar la configuración del container que se quiere segurizar en el archivo `values.yaml`:
 
 ```yaml
-extraContainers:
+containers:
   - name: app
     image: "quay.io/eximiait/openshift-secured-app:latest"
     imagePullPolicy: IfNotPresent
@@ -36,5 +36,5 @@ upstream: "http://app:8080"
 - Generar y configurar ***cookieSecret*** en el archivo `values.yaml`:
 
 ```yaml
-cookieSecret: "value"
+cookieSecret: "value" # dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64 | tr -d -- '\n' | tr -- '+/' '-_'; echo
 ```
