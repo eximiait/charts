@@ -1,0 +1,13 @@
+## Reference: https://github.com/helm/chart-testing/blob/master/doc/ct_lint-and-install.md
+remote: origin
+target-branch: main
+chart-dirs:
+  - '.'
+chart-repos:
+  - eximiait=https://charts.eximiait.com.ar
+helm-extra-args: "--timeout 600s"  
+validate-chart-schema: false
+validate-maintainers: true
+validate-yaml: true
+exclude-deprecated: true
+excluded-charts: []
