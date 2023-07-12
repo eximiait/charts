@@ -1,10 +1,10 @@
 base:
   nameOverride: "redisinsight"
   fullnameOverride: "redisinsight"
-  extraVolumes: 
+  volumes: 
     - name: db
       emptyDir: {}
-  extraContainers:
+  containers:
     - name: app
       image: "redislabs/redisinsight:1.14.0"
       imagePullPolicy: IfNotPresent
