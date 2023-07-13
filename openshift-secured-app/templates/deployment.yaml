@@ -39,7 +39,7 @@ spec:
             - --https-address=:8443
             - --provider=openshift
             - --openshift-service-account=proxy
-            - --upstream= {{ .Values.upstream }}
+            - --upstream={{ .Values.upstream }}
             - --tls-cert=/etc/tls/private/tls.crt
             - --tls-key=/etc/tls/private/tls.key
             - --cookie-secret={{ .Values.cookieSecret }}
