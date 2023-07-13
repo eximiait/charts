@@ -56,10 +56,13 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
         uses: helm/kind-action@v1.7.0
 
-      - name: Deploy Route CRD
-        if: steps.list-changed.outputs.changed == 'true'
+      - name: Apply openshift manifests
+        if: |
+          steps.list-changed.outputs.changed == 'true' &&
+          (contains(steps.list-changed.outputs.changed_charts, 'openshift-secured-app') ||
+          contains(steps.list-changed.outputs.changed_charts, 'osr'))
         run: |
-          kubectl apply -f ./test/crds/route.yaml
+          kubectl apply -f ./test/openshift/**/*.yaml
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
