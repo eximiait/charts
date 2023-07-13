@@ -2,7 +2,7 @@ apiVersion: v2
 description: A secured version of an APP for OpenShift
 name: openshift-secured-app
 type: application
-version: 0.2.0
+version: 0.2.1
 keywords:
   - openshift, oauth-proxy
 home: https://github.com/eximiait/charts
@@ -14,9 +14,16 @@ maintainers:
     url: https://www.eximiait.com.ar
 annotations:
   artifacthub.io/changes: |
+    - description: Fix upstream args in deployment
+      kind: fixed
+      version: 0.2.1
+      links:
+        - name: GitHub Issue
+          url: https://github.com/eximiait/charts/issues/15
     - description: Refactor extraContainers to containers and extraVolumes to volumes
       kind: changed
       version: 0.2.0
       links:
         - name: GitHub Issue
-          url: https://github.com/eximiait/charts/issues/4        
+          url: https://github.com/eximiait/charts/issues/4
+  
