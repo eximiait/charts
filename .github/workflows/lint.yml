@@ -62,7 +62,7 @@ jobs:
           (contains(steps.list-changed.outputs.changed_charts, 'openshift-secured-app') ||
           contains(steps.list-changed.outputs.changed_charts, 'osr'))
         run: |
-          kubectl apply -f ./test/openshift/**/*.yaml
+          kubectl apply -f ./test/openshift/*
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
