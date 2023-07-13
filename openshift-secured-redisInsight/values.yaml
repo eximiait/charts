@@ -1,7 +1,7 @@
 base:
   nameOverride: "redisinsight"
   fullnameOverride: "redisinsight"
-  volumes: 
+  volumes:
     - name: db
       emptyDir: {}
   containers:
@@ -27,3 +27,4 @@ base:
   upstream: http://localhost:8001
 
   cookieSecret: "bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="
+  
