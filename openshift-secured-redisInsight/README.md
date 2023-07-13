@@ -86,7 +86,7 @@ We use OAuth-proxy as a mechanism for securing access to RedisInsight. OAuth-pro
 
 ## Contribution
 
-Contributions are welcome! Read the [Contribution Guidelines](CONTRIBUTING.md) for more information.
+Contributions are welcome! Read the [Contribution Guidelines](../CONTRIBUTING.md) for more information.
 
 ## License
 
