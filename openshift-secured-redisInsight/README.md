@@ -1,7 +1,9 @@
 # Project: Secured RedisInsight Chart 
 
 ## Overview
-This project contains a Helm chart that enables the deployment of the RedisInsight application on an OpenShift environment. The application is secured using an oauth-proxy to control access and provide robust authentication and authorization. 
+This project contains a Helm chart that enables the deployment of the
+[RedisInsight](https://github.com/RedisInsight/RedisInsight) application on an OpenShift environment.
+The application is secured using [OpenShift oauth-proxy](https://github.com/openshift/oauth-proxy) to control access and provide robust authentication and authorization. 
 
 ## Features
 - **RedisInsight**: This powerful tool lets you visualize your data, monitor Redis servers, manage your databases, and execute commands on your Redis server. You can use RedisInsight for data modeling, performance optimization, and real-time tracking of your Redis data.
