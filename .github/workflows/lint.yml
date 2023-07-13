@@ -1,5 +1,5 @@
 ## Reference: https://github.com/helm/chart-testing-action
-name: Linting
+name: Linting and Testing
 on: pull_request
 
 permissions:
@@ -17,3 +17,45 @@ jobs:
       - name: Run ah lint
         working-directory: '.'
         run: ah lint
+  chart-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.12.1
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          check-latest: true
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@v2.4.0
+
+      - name: Run chart-testing (list-changed)
+        id: list-changed
+        run: |
+          changed=$(ct --config ./.github/configs/ct-lint.yaml list-changed)
+          charts=$(echo "$changed" | tr '\n' ' ' | xargs)
+          if [[ -n "$changed" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "changed_charts=$charts" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run chart-testing (lint)
+        if: steps.list-changed.outputs.changed == 'true'
+        run: ct lint --debug --config ./.github/configs/ct-lint.yaml
+
+      - name: Create kind cluster
+        if: steps.list-changed.outputs.changed == 'true'
+        uses: helm/kind-action@v1.7.0
+
+      - name: Run chart-testing (install)
+        if: steps.list-changed.outputs.changed == 'true'
+        run: ct install --config ./.github/configs/ct-install.yaml
