@@ -59,7 +59,7 @@ jobs:
       - name: Deploy Route CRD
         if: steps.list-changed.outputs.changed == 'true'
         run: |
-          kubectl apply -f https://github.com/openshift/router/blob/master/deploy/route_crd.yaml
+          kubectl apply -f ./test/crds/route.yaml
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
