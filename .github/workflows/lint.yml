@@ -17,7 +17,7 @@ jobs:
       - name: Run ah lint
         working-directory: '.'
         run: ah lint
-  chart-test:
+  lint-and-test-install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
