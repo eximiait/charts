@@ -1,5 +1,7 @@
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/eximiait)](https://artifacthub.io/packages/search?repo=eximiait)
 ![release workflow](https://github.com/eximiait/charts/actions/workflows/release.yml/badge.svg)
+![GitHub all releases](https://img.shields.io/github/downloads/eximiait/charts/total)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Charts
 
