@@ -72,10 +72,13 @@ entries:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-app-0.2.1/openshift-secured-app-0.2.1.tgz
     version: 0.2.1
   - annotations:
-      artifacthub.io/changes: "- description: Refactor extraContainers to containers
-        and extraVolumes to volumes\n  kind: changed\n  version: 0.2.0\n  links:\n
-        \   - name: GitHub Issue\n      url: https://github.com/eximiait/charts/issues/4
-        \       "
+      artifacthub.io/changes: |
+        - description: Refactor extraContainers to containers and extraVolumes to volumes
+          kind: changed
+          version: 0.2.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/4
     apiVersion: v2
     created: "2023-07-12T17:36:04.599927981Z"
     description: A secured version of an APP for OpenShift
@@ -94,24 +97,6 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-app-0.2.0/openshift-secured-app-0.2.0.tgz
     version: 0.2.0
-  - apiVersion: v2
-    created: "2023-07-11T20:32:25.5635118-03:00"
-    description: A secured version of an APP for OpenShift
-    digest: 3120a50fde4a0210db98eeb84a5675c20c110bb459b334638a2de79adc9afb90
-    home: https://github.com/eximiait/charts
-    keywords:
-    - openshift, oauth-proxy
-    maintainers:
-    - email: info.eximia.it@gmail.com
-      name: eximiait
-      url: https://www.eximiait.com.ar
-    name: openshift-secured-app
-    sources:
-    - https://github.com/eximiait/charts/tree/main/openshift-secured-app
-    type: application
-    urls:
-    - openshift-secured-app-0.1.0.tgz
-    version: 0.1.0
   openshift-secured-redisInsight:
   - annotations:
       artifacthub.io/changes: |
@@ -145,8 +130,10 @@ entries:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.5.0/openshift-secured-redisInsight-0.5.0.tgz
     version: 0.5.0
   - annotations:
-      artifacthub.io/changes: "- description: Upgrade openshift-secured-app to 0.2.0\n
-        \ kind: changed\n  version: 0.4.0  "
+      artifacthub.io/changes: |
+        - description: Upgrade openshift-secured-app to 0.2.0
+          kind: changed
+          version: 0.4.0
     apiVersion: v2
     created: "2023-07-12T21:46:39.26481366Z"
     dependencies:
@@ -170,54 +157,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-  - apiVersion: v2
-    created: "2023-07-11T20:32:25.5675102-03:00"
-    dependencies:
-    - alias: base
-      name: openshift-secured-app
-      repository: https://charts.eximiait.com.ar
-      version: 0.1.0
-    description: A secured version of RedisInsight for OpenShift
-    digest: c95155c8ef02bb6e303f2757218670fa69ff4047c104ffdaebb26580f8987d17
-    home: https://github.com/eximiait/charts
-    keywords:
-    - openshift, oauth, redis, redisinsight
-    maintainers:
-    - email: info.eximia.it@gmail.com
-      name: eximiait
-      url: https://www.eximiait.com.ar
-    name: openshift-secured-redisInsight
-    sources:
-    - https://github.com/eximiait/charts/tree/main/openshift-secured-redisInsight
-    type: application
-    urls:
-    - openshift-secured-redisInsight-0.3.0.tgz
-    version: 0.3.0
-  - apiVersion: v2
-    created: "2023-07-11T20:32:25.566513-03:00"
-    description: A secured version of RedisInsight for OpenShift
-    digest: 1de45f800d7cf49de511f6332779e287be668dd74f26d09b9742f0547e9e936a
-    home: https://github.com/eximiait/charts
-    keywords:
-    - openshift, oauth, redis, redisinsight
-    maintainers:
-    - email: info.eximia.it@gmail.com
-      name: eximiait
-      url: https://www.eximiait.com.ar
-    name: openshift-secured-redisInsight
-    sources:
-    - https://github.com/eximiait/charts/tree/main/charts/openshift-secured-redisInsight
-    type: application
-    urls:
-    - openshift-secured-redisInsight-0.2.0.tgz
-    version: 0.2.0
-  - apiVersion: v2
-    created: "2023-07-11T20:32:25.5645123-03:00"
-    description: A secured version of RedisInsight for OpenShift
-    digest: bfbdffbd89303d1a07141a428b476ea42fdd2e856379782d7a4304302d3527ae
-    name: openshift-secured-redisInsight
-    type: application
-    urls:
-    - openshift-secured-redisInsight-0.1.0.tgz
-    version: 0.1.0
 generated: "2023-07-14T15:14:45.37374799Z"
