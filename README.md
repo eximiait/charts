@@ -1,4 +1,5 @@
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/eximiait)](https://artifacthub.io/packages/search?repo=eximiait)
+![release workflow](https://github.com/eximiait/charts/actions/workflows/release.yml/badge.svg)
 
 # Charts
 
