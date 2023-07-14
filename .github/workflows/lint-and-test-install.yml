@@ -62,7 +62,7 @@ jobs:
           (contains(steps.list-changed.outputs.changed_charts, 'openshift-secured-app') ||
           contains(steps.list-changed.outputs.changed_charts, 'openshift-secured-ri'))
         run: |
-          kubectl apply -f ./test/openshift --recursive
+          kubectl apply -f ./.github/test/openshift --recursive
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
