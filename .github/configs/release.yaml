@@ -1,0 +1,8 @@
+## Reference: https://github.com/helm/chart-releaser
+index-path: "./index.yaml"
+
+# PGP signing
+sign: true
+key: EximiaIT maintainers
+
+generate-release-notes: true
