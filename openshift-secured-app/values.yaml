@@ -7,7 +7,7 @@ proxy:
   image:
     repository: quay.io/openshift/origin-oauth-proxy
     pullPolicy: IfNotPresent
-    tag: 4.6 # se elige la 4.6 porque es la única (hasta la 4.14) que no tiene vulnerabilidades encontradas.
+    tag: 4.14
 
 resources: {}
   # limits:

@@ -2,7 +2,7 @@ apiVersion: v2
 description: A secured version of an APP for OpenShift
 name: openshift-secured-app
 type: application
-version: 0.2.1
+version: 0.3.0
 keywords:
   - openshift, oauth-proxy
 home: https://github.com/eximiait/charts
@@ -14,6 +14,12 @@ maintainers:
     url: https://www.eximiait.com.ar
 annotations:
   artifacthub.io/changes: |
+    - description: Bump origin-oauth-proxy to 4.14
+      kind: added
+      version: 0.3.0
+      links:
+        - name: GitHub Issue
+          url: https://github.com/eximiait/charts/issues/18
     - description: Fix upstream args in deployment
       kind: fixed
       version: 0.2.1
