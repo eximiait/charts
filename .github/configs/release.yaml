@@ -3,6 +3,6 @@ index-path: "./index.yaml"
 
 # PGP signing
 sign: true
-key: EximiaIT maintainers
+key: eximiait-charts
 
 generate-release-notes: true
