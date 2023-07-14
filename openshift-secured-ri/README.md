@@ -76,7 +76,7 @@ This chart has the following dependency:
 ```yaml
 dependencies:
   - name: openshift-secured-app
-    version: 0.2.0
+    version: x.y.z
     repository: https://charts.eximiait.com.ar
 ```
 
@@ -87,7 +87,3 @@ We use OAuth-proxy as a mechanism for securing access to RedisInsight. OAuth-pro
 ## Contribution
 
 Contributions are welcome! Read the [Contribution Guidelines](../CONTRIBUTING.md) for more information.
-
-## License
-
-The chart is distributed under the license chosen by the chart maintainer. Check the chart's documentation for more details.
