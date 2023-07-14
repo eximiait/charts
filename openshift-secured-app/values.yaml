@@ -28,10 +28,10 @@ containers: []
 
 upstream: http://localhost:8080
 
-cookieSecret: "changeme" # dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64 | tr -d -- '\n' | tr -- '+/' '-_'; echo
+cookieSecret: "changeme"  # dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64 | tr -d -- '\n' | tr -- '+/' '-_'; echo
 
 rbac:
-  namespaced: false # true habilita para que solamente se pueda acceder desde el namespace en el que se encuentra instalado
+  namespaced: false  # true habilita para que solamente se pueda acceder desde el namespace en el que se encuentra instalado
 
 proxyExtraEnv: []
 #   - --openshift-sar='{"namespace":"redis-insight","resource":"services","resourceName":"proxy","verb":"GET"}'
