@@ -3,6 +3,44 @@ entries:
   openshift-secured-app:
   - annotations:
       artifacthub.io/changes: |
+        - description: Bump origin-oauth-proxy to 4.14
+          kind: added
+          version: 0.3.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/18
+        - description: Fix upstream args in deployment
+          kind: fixed
+          version: 0.2.1
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/15
+        - description: Refactor extraContainers to containers and extraVolumes to volumes
+          kind: changed
+          version: 0.2.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/4
+    apiVersion: v2
+    created: "2023-07-14T15:14:45.373726789Z"
+    description: A secured version of an APP for OpenShift
+    digest: 4612f78d1b9a8576cd06c3882cdad0adef2e523a4ba5995885daf9d16886ac09
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth-proxy
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-app
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-app
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-app-0.3.0/openshift-secured-app-0.3.0.tgz
+    version: 0.3.0
+  - annotations:
+      artifacthub.io/changes: |
         - description: Fix upstream args in deployment
           kind: fixed
           version: 0.2.1
@@ -182,4 +220,4 @@ entries:
     urls:
     - openshift-secured-redisInsight-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-14T00:09:33.695354989Z"
+generated: "2023-07-14T15:14:45.37374799Z"
