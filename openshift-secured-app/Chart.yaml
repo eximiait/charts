@@ -2,7 +2,7 @@ apiVersion: v2
 description: A secured version of an APP for OpenShift
 name: openshift-secured-app
 type: application
-version: 0.3.0
+version: 0.3.1
 keywords:
   - openshift, oauth-proxy
 home: https://github.com/eximiait/charts
