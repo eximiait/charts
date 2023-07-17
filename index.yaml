@@ -148,6 +148,40 @@ entries:
           kind: changed
           version: 0.4.0
     apiVersion: v2
+    created: "2023-07-17T23:47:23.577927087Z"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.3.0
+    description: A secured version of RedisInsight for OpenShift
+    digest: 4c1af58df82ba641d4803550e78e104103e519c6864e1bd1c1d22b417d15c81b
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-ri
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.6.1/openshift-secured-redisInsight-0.6.1.tgz
+    version: 0.6.1
+  - annotations:
+      artifacthub.io/changes: |
+        - description: Bump openshift-secured-app version to 0.3.0
+          kind: Added
+          version: 0.6.0
+        - description: Documentation of the chart in the README.md
+          kind: Added
+          version: 0.5.0
+        - description: Upgrade openshift-secured-app to 0.2.0
+          kind: changed
+          version: 0.4.0
+    apiVersion: v2
     created: "2023-07-14T23:07:40.341097815Z"
     dependencies:
     - alias: base
@@ -229,4 +263,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-17T23:08:46.215020435Z"
+generated: "2023-07-17T23:47:23.577958188Z"
