@@ -22,6 +22,44 @@ entries:
             - name: GitHub Issue
               url: https://github.com/eximiait/charts/issues/4
     apiVersion: v2
+    created: "2023-07-17T23:08:46.214989834Z"
+    description: A secured version of an APP for OpenShift
+    digest: 3a0790dea02c44e9579823936bad246ffebc90d92f3a06524d55f7704dd1caff
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth-proxy
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-app
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-app
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-app-0.3.1/openshift-secured-app-0.3.1.tgz
+    version: 0.3.1
+  - annotations:
+      artifacthub.io/changes: |
+        - description: Bump origin-oauth-proxy to 4.14
+          kind: added
+          version: 0.3.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/18
+        - description: Fix upstream args in deployment
+          kind: fixed
+          version: 0.2.1
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/15
+        - description: Refactor extraContainers to containers and extraVolumes to volumes
+          kind: changed
+          version: 0.2.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/4
+    apiVersion: v2
     created: "2023-07-14T15:14:45.373726789Z"
     description: A secured version of an APP for OpenShift
     digest: 4612f78d1b9a8576cd06c3882cdad0adef2e523a4ba5995885daf9d16886ac09
@@ -191,4 +229,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-14T23:07:40.341114115Z"
+generated: "2023-07-17T23:08:46.215020435Z"
