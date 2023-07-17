@@ -40,28 +40,29 @@ helm install my-release eximiait/openshift-secured-redisinsight -f values.yaml
 
 The following table lists the configurable parameters of the Secured RedisInsight Chart and their default values.
 
-| Parameter                  | Description                                     | Default                                                    |
-|----------------------------|-------------------------------------------------|------------------------------------------------------------|
-| `base.nameOverride`| Overrides the name of the chart | `"redisinsight"` |
-| `base.fullnameOverride`| Overrides the full name of the chart | `"redisinsight"` |
-| `base.volumes[0].name`| Name of the volume | `"db"` |
-| `base.volumes[0].emptyDir`| Specifies that the volume is to have initially empty directories | `{}` |
-| `base.containers[0].name`| Name of the container | `"app"` |
-| `base.containers[0].image`| The Docker image for RedisInsight | `"redislabs/redisinsight:1.14.0"` |
-| `base.containers[0].imagePullPolicy`| Image pull policy for RedisInsight | `"IfNotPresent"` |
-| `base.containers[0].ports[0].name`| Name of the exposed port | `"http"` |
-| `base.containers[0].ports[0].containerPort`| Port to expose on the container's IP address | `8001` |
-| `base.containers[0].ports[0].protocol`| Protocol for the port | `"TCP"` |
-| `base.containers[0].livenessProbe.httpGet.path`| Path to access on the IP to check the health | `"/healthcheck/"` |
-| `base.containers[0].livenessProbe.httpGet.port`| Port to use to check the health | `8001` |
-| `base.containers[0].livenessProbe.initialDelaySeconds`| Number of seconds after the container has started before liveness probes are initiated | `5` |
-| `base.containers[0].livenessProbe.periodSeconds`| How often (in seconds) to perform the probe | `5` |
-| `base.containers[0].livenessProbe.failureThreshold`| When a Pod starts and the probe fails, Kubernetes will try failureThreshold times before giving up | `2` |
-| `base.containers[0].resources`| Compute resources required by the container | `{}` |
-| `base.containers[0].volumeMounts[0].name`| Name of the volume mount | `"db"` |
-| `base.containers[0].volumeMounts[0].mountPath`| Path where the volume should be mounted in the container | `"/db"` |
-| `base.upstream`| Upstream URL for the OAuth Proxy | `"http://localhost:8001"` |
-| `base.cookieSecret`| Secret used to encrypt OAuth cookies | `"bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="` |
+| Parameter                                              | Description                                                                                                                             | Default                                          |
+|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| `base.nameOverride`                                    | Overrides the name of the chart                                                                                                         | `"redisinsight"`                                 |
+| `base.fullnameOverride`                                | Overrides the full name of the chart                                                                                                    | `"redisinsight"`                                 |
+| `base.volumes[0].name`                                 | Name of the volume                                                                                                                      | `"db"`                                           |
+| `base.volumes[0].emptyDir`                             | Sets to use an empty directory as volume                                                                                                | `{}`                                             |
+| `base.volumes[0].persistentVolumeClaim.claimName`      | The name of PersistentVolumeClaim to use. If selected, you should set `base.volumes[0].emptyDir: null` and create a PVC with this name. | `null`                                           |
+| `base.containers[0].name`                              | Name of the container                                                                                                                   | `"app"`                                          |
+| `base.containers[0].image`                             | The Docker image for RedisInsight                                                                                                       | `"redislabs/redisinsight:1.14.0"`                |
+| `base.containers[0].imagePullPolicy`                   | Image pull policy for RedisInsight                                                                                                      | `"IfNotPresent"`                                 |
+| `base.containers[0].ports[0].name`                     | Name of the exposed port                                                                                                                | `"http"`                                         |
+| `base.containers[0].ports[0].containerPort`            | Port to expose on the container's IP address                                                                                            | `8001`                                           |
+| `base.containers[0].ports[0].protocol`                 | Protocol for the port                                                                                                                   | `"TCP"`                                          |
+| `base.containers[0].livenessProbe.httpGet.path`        | Path to access on the IP to check the health                                                                                            | `"/healthcheck/"`                                |
+| `base.containers[0].livenessProbe.httpGet.port`        | Port to use to check the health                                                                                                         | `8001`                                           |
+| `base.containers[0].livenessProbe.initialDelaySeconds` | Number of seconds after the container has started before liveness probes are initiated                                                  | `5`                                              |
+| `base.containers[0].livenessProbe.periodSeconds`       | How often (in seconds) to perform the probe                                                                                             | `5`                                              |
+| `base.containers[0].livenessProbe.failureThreshold`    | When a Pod starts and the probe fails, Kubernetes will try failureThreshold times before giving up                                      | `2`                                              |
+| `base.containers[0].resources`                         | Compute resources required by the container                                                                                             | `{}`                                             |
+| `base.containers[0].volumeMounts[0].name`              | Name of the volume mount                                                                                                                | `"db"`                                           |
+| `base.containers[0].volumeMounts[0].mountPath`         | Path where the volume should be mounted in the container                                                                                | `"/db"`                                          |
+| `base.upstream`                                        | Upstream URL for the OAuth Proxy                                                                                                        | `"http://localhost:8001"`                        |
+| `base.cookieSecret`                                    | Secret used to encrypt OAuth cookies                                                                                                    | `"bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="` |
 
 These parameters can be set in the `values.yaml` file or passed on the command line during chart installation. For example:
 
