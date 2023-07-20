@@ -1,0 +1,60 @@
+base:
+  nameOverride: "pgadmin"
+  fullnameOverride: "pgadmin"
+  volumes:
+    - name: pgadmin-data
+      emptyDir: {}
+      # If you want to use a PVC, set 'pvc.enabled: true' and uncomment the following lines and delete de previous one (emptyDir: {})
+      # persistentVolumeClaim:
+      #    claimName: storage-claim
+  containers:
+    - resources: {}
+      readinessProbe:
+        httpGet:
+          path: /misc/ping
+          port: http
+          scheme: HTTP
+        initialDelaySeconds: 30
+        timeoutSeconds: 15
+        periodSeconds: 60
+        successThreshold: 1
+        failureThreshold: 3
+      terminationMessagePath: /dev/termination-log
+      name: pgadmin
+      livenessProbe:
+        httpGet:
+          path: /misc/ping
+          port: http
+          scheme: HTTP
+        initialDelaySeconds: 30
+        timeoutSeconds: 15
+        periodSeconds: 60
+        successThreshold: 1
+        failureThreshold: 3
+      env:
+        - name: PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION
+          value: 'False'
+        - name: PGADMIN_DEFAULT_EMAIL
+          value: pgadmin@pgadmin.org
+        - name: PGADMIN_DEFAULT_PASSWORD
+          value: secret
+        - name: PGADMIN_CONFIG_SERVER_MODE
+          value: 'False'
+        - name: PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED
+          value: 'False'
+      ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: pgadmin-data
+          mountPath: /var/lib/pgadmin
+
+  upstream: "http://localhost:80"
+
+  cookieSecret: "bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="
+
+pvc:
+  enabled: false
+  size: 1Gi

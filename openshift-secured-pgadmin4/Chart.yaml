@@ -1,0 +1,27 @@
+apiVersion: v2
+description: A secured version of PgAdmin for OpenShift
+name: openshift-secured-pgadmin
+type: application
+version: 0.1.0
+keywords:
+  - openshift, oauth, pgadmin
+home: https://github.com/eximiait/charts
+sources:
+  - https://github.com/eximiait/charts/tree/main/openshift-secured-pgadmin
+maintainers:
+  - name: eximiait
+    email: info.eximia.it@gmail.com
+    url: https://www.eximiait.com.ar
+dependencies:
+  - name: openshift-secured-app
+    alias: base
+    version: 0.3.1
+    repository: https://charts.eximiait.com.ar
+annotations:
+  artifacthub.io/changes: |
+    - description: Release 0.1.0 of the chart
+      kind: Added
+      version: 0.1.0
+      links:
+        - name: GitHub Issue
+          url: https://github.com/eximiait/charts/issues/28
