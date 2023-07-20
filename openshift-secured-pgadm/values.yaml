@@ -50,7 +50,9 @@ base:
       volumeMounts:
         - name: pgadmin-data
           mountPath: /var/lib/pgadmin
-
+      terminationMessagePolicy: File
+      image: 'docker.io/dpage/pgadmin4:7.4'
+      
   upstream: "http://localhost:80"
 
   cookieSecret: "bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="
