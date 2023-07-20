@@ -138,6 +138,46 @@ entries:
   openshift-secured-redisInsight:
   - annotations:
       artifacthub.io/changes: |
+        - description: Add PVC for RedisInsight database
+          kind: Added
+          version: 0.7.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/26
+        - description: Bump openshift-secured-app version to 0.3.0
+          kind: Added
+          version: 0.6.0
+        - description: Documentation of the chart in the README.md
+          kind: Added
+          version: 0.5.0
+        - description: Upgrade openshift-secured-app to 0.2.0
+          kind: changed
+          version: 0.4.0
+    apiVersion: v2
+    created: "2023-07-20T20:36:30.81507948Z"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.3.1
+    description: A secured version of RedisInsight for OpenShift
+    digest: 414191655e7684188b43be3b694842558f0eeeb442ddfa9fcefd1764344827f0
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-ri
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.7.0/openshift-secured-redisInsight-0.7.0.tgz
+    version: 0.7.0
+  - annotations:
+      artifacthub.io/changes: |
         - description: Bump openshift-secured-app version to 0.3.0
           kind: Added
           version: 0.6.0
@@ -263,4 +303,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-17T23:47:23.577958188Z"
+generated: "2023-07-20T20:36:30.81511038Z"
