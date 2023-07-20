@@ -57,12 +57,14 @@ jobs:
         uses: helm/kind-action@v1.7.0
 
       - name: Apply openshift manifests
-        if: |
-          steps.list-changed.outputs.changed == 'true' &&
-          (contains(steps.list-changed.outputs.changed_charts, 'openshift-secured-app') ||
-          contains(steps.list-changed.outputs.changed_charts, 'openshift-secured-ri'))
+        if: steps.list-changed.outputs.changed == 'true'
         run: |
-          kubectl apply -f ./.github/test/openshift --recursive
+          for chart in ${{ steps.list-changed.outputs.changed_charts }}; do
+            if [[ "$chart" == openshift-* ]]; then
+              kubectl apply -f ./.github/test/openshift --recursive
+              break
+            fi
+          done
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
