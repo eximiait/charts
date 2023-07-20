@@ -1,0 +1,13 @@
+{{ if .Values.rbac.enabled -}}
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pgadmin-scc-anyuid-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: scc-use-anyuid-role
+{{- end }}
