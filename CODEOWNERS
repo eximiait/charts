@@ -6,3 +6,6 @@
 
 # openshift-secured-redisInsight
 /openshift-secured-redisInsight     @leaqui
+
+# openshift-secured-pgadmin
+/openshift-secured-redisInsight     @mbecca @leaqui
