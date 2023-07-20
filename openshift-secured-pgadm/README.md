@@ -85,7 +85,7 @@ dependencies:
 
 ## Security
 
-We use OAuth-proxy as a mechanism for securing access to RedisInsight. OAuth-proxy provides a layer of security that handles authentication and authorization, ensuring only authenticated and authorized users can access the application.
+We use OAuth-proxy as a mechanism for securing access to PgAdmin. OAuth-proxy provides a layer of security that handles authentication and authorization, ensuring only authenticated and authorized users can access the application.
 
 ## Contribution
 
