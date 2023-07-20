@@ -59,13 +59,16 @@ jobs:
       - name: Apply openshift manifests
         if: steps.list-changed.outputs.changed == 'true'
         run: |
+          match_found=false
           for chart in ${{ steps.list-changed.outputs.changed_charts }}; do
             if [[ "$chart" == openshift-* ]]; then
-              kubectl apply -f ./.github/test/openshift --recursive
+              match_found=true
               break
             fi
           done
-
+          if $match_found; then
+            kubectl apply -f ./.github/test/openshift --recursive
+          fi
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
         run: ct install --config ./.github/configs/ct-install.yaml --debug --namespace chart-testing
