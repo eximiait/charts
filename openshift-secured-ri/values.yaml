@@ -5,7 +5,7 @@ base:
     - name: db
       emptyDir: {}
       # If you want to use a PVC, set 'pvc.enabled: true' and uncomment the following lines and delete de previous one (emptyDir: {})
-      #persistentVolumeClaim:
+      # persistentVolumeClaim:
       #    claimName: storage-claim
   containers:
     - name: app
