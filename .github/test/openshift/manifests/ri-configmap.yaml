@@ -1,0 +1,6 @@
+kind: ConfigMap
+metadata:
+  name: redisinsight-envs
+  namespace: chart-testing
+data:
+  VAR1: value1
