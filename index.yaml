@@ -173,6 +173,37 @@ entries:
   openshift-secured-redisInsight:
   - annotations:
       artifacthub.io/changes: |
+        - description: Add envs configmap to chart
+          kind: Added
+          version: 0.9.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/32
+    apiVersion: v2
+    created: "2023-07-21T20:51:06.064576322Z"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.3.1
+    description: A secured version of RedisInsight for OpenShift
+    digest: 1120a645a9e26e8e8fb40e1d35d6dc606dd25abb6207c0dcfe26747a8cd98a59
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-ri
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.9.0/openshift-secured-redisInsight-0.9.0.tgz
+    version: 0.9.0
+  - annotations:
+      artifacthub.io/changes: |
         - description: Add environment variables from ConfigMap
           kind: Added
           version: 0.8.0
@@ -412,4 +443,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-21T19:36:07.522224096Z"
+generated: "2023-07-21T20:51:06.064698522Z"
