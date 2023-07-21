@@ -37,8 +37,8 @@ base:
 
   cookieSecret: "bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="
 
-  route: 
-      host: changeme.org
+  route:
+    host: changeme.org
 
 pvc:
   enabled: false
