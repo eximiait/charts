@@ -3,4 +3,4 @@ apiVersion: v1
 metadata:
   name: redisinsight-envs
 data:
-  RITRUSTEDORIGINS: https://{{ .Values.redisInsight.base.route.host }}
+  RITRUSTEDORIGINS: https://{{ .Values.base.route.host }}
