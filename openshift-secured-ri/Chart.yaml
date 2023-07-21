@@ -2,7 +2,7 @@ apiVersion: v2
 description: A secured version of RedisInsight for OpenShift
 name: openshift-secured-redisInsight
 type: application
-version: 0.8.0
+version: 0.9.0
 keywords:
   - openshift, oauth, redis, redisinsight
 home: https://github.com/eximiait/charts
@@ -19,9 +19,9 @@ dependencies:
     repository: https://charts.eximiait.com.ar
 annotations:
   artifacthub.io/changes: |
-    - description: Add environment variables from ConfigMap
+    - description: Add envs configmap to chart
       kind: Added
-      version: 0.8.0
+      version: 0.9.0
       links:
         - name: GitHub Issue
-          url: https://github.com/eximiait/charts/issues/30
+          url: https://github.com/eximiait/charts/issues/32

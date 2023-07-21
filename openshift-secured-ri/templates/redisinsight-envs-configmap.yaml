@@ -2,6 +2,5 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: redisinsight-envs
-  namespace: chart-testing
 data:
-  VAR1: value1
+  RITRUSTEDORIGINS: https://{{ .Values.base.route.host }}
