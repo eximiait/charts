@@ -11,6 +11,12 @@ base:
     - name: app
       image: "redislabs/redisinsight:1.14.0"
       imagePullPolicy: IfNotPresent
+      envFrom:
+        - configMapRef:
+            name: redisinsight-envs
+      env:
+        - name: RIPROXYENABLE
+          value: "true"
       ports:
         - name: http
           containerPort: 8001
