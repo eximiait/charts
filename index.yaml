@@ -173,6 +173,37 @@ entries:
   openshift-secured-redisInsight:
   - annotations:
       artifacthub.io/changes: |
+        - description: Add environment variables from ConfigMap
+          kind: Added
+          version: 0.8.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/30
+    apiVersion: v2
+    created: "2023-07-21T19:36:07.522198196Z"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.3.1
+    description: A secured version of RedisInsight for OpenShift
+    digest: 4e7e737a6a9acb007634201af481b6fbc8a160ea039f032102356debbceecd44
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-ri
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.8.0/openshift-secured-redisInsight-0.8.0.tgz
+    version: 0.8.0
+  - annotations:
+      artifacthub.io/changes: |
         - description: Fix documentation
           kind: Added
           version: 0.7.1
@@ -381,4 +412,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-21T01:24:04.245025122Z"
+generated: "2023-07-21T19:36:07.522224096Z"
