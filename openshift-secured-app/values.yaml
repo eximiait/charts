@@ -40,4 +40,5 @@ proxyExtraEnv: []
 #   - --openshift-sar='{"namespace":"redis-insight","resource":"services","resourceName":"proxy","verb":"GET"}'
 
 route:
+  enabled: true
   host: changeme.org
