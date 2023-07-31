@@ -164,6 +164,40 @@ entries:
   openshift-secured-pgadmin:
   - annotations:
       artifacthub.io/changes: |
+        - description: Upgrade to pgadmin4 7.5
+          kind: Added
+          version: 0.1.2
+        - description: Add fsGroup to securityContext
+          kind: Fixed
+          version: 0.1.2
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/36
+    apiVersion: v2
+    created: "2023-07-31T19:15:54.665324174Z"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.4.0
+    description: A secured version of PgAdmin for OpenShift
+    digest: 28d69ea6eee6985b91195c58950c17f1c0a831d5eb5ecb174c3f8a6224ca07aa
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, pgadmin
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-pgadmin
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-pgadmin
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-pgadmin-0.1.2/openshift-secured-pgadmin-0.1.2.tgz
+    version: 0.1.2
+  - annotations:
+      artifacthub.io/changes: |
         - description: Release 0.1.0 of the chart
           kind: Added
           version: 0.1.0
@@ -469,4 +503,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-31T18:36:04.757307011Z"
+generated: "2023-07-31T19:15:54.665354676Z"
