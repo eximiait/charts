@@ -3,6 +3,32 @@ entries:
   openshift-secured-app:
   - annotations:
       artifacthub.io/changes: |
+        - description: Add securityContext to Deployment
+          kind: added
+          version: 0.4.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/34
+    apiVersion: v2
+    created: "2023-07-31T18:36:04.757264611Z"
+    description: A secured version of an APP for OpenShift
+    digest: 4ef5bcbdfe0bba7ebe4f1d2ea96de5a2060e1b430555fcec33f91d0ac337ace2
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth-proxy
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-app
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-app
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-app-0.4.0/openshift-secured-app-0.4.0.tgz
+    version: 0.4.0
+  - annotations:
+      artifacthub.io/changes: |
         - description: Bump origin-oauth-proxy to 4.14
           kind: added
           version: 0.3.0
@@ -443,4 +469,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-21T20:51:06.064698522Z"
+generated: "2023-07-31T18:36:04.757307011Z"
