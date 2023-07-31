@@ -17,6 +17,10 @@ spec:
         {{- include "openshift-secured-app-chart.selectorLabels" . | nindent 8 }}
     spec:
       serviceAccountName: proxy
+      {{ with .Values.securityContext}} 
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       volumes:
         - name: proxy-tls
           secret:

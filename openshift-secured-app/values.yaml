@@ -17,6 +17,9 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+securityContext: {}
+  # fsGroup: 1001
+
 initContainers: []
   # - name: init
   #   image: busybox
