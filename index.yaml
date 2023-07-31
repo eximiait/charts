@@ -3,6 +3,32 @@ entries:
   openshift-secured-app:
   - annotations:
       artifacthub.io/changes: |
+        - description: Add the possibility to choose whether or not to create a route
+          kind: added
+          version: 0.5.0
+          links:
+            - name: GitHub Issue
+              url: https://github.com/eximiait/charts/issues/38
+    apiVersion: v2
+    created: "2023-07-31T20:26:51.90391639Z"
+    description: A secured version of an APP for OpenShift
+    digest: 84ad8a83fe54c90801d51ea4a10bdd9ea43c7c5668df4c1182d6e899bb634f4d
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth-proxy
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-app
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-app
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-app-0.5.0/openshift-secured-app-0.5.0.tgz
+    version: 0.5.0
+  - annotations:
+      artifacthub.io/changes: |
         - description: Add securityContext to Deployment
           kind: added
           version: 0.4.0
@@ -503,4 +529,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-31T19:15:54.665354676Z"
+generated: "2023-07-31T20:26:51.90395969Z"
