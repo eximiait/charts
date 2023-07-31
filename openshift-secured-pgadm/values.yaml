@@ -7,6 +7,8 @@ base:
       # If you want to use a PVC, set 'pvc.enabled: true' and uncomment the following lines and delete de previous one (emptyDir: {})
       # persistentVolumeClaim:
       #    claimName: storage-claim
+  securityContext:
+    fsGroup: 5050
   containers:
     - resources: {}
       readinessProbe:
@@ -51,11 +53,10 @@ base:
         - name: pgadmin-data
           mountPath: /var/lib/pgadmin
       terminationMessagePolicy: File
-      image: 'docker.io/dpage/pgadmin4:7.4'
+      image: 'docker.io/dpage/pgadmin4:7.5'
       securityContext:
         runAsUser: 5050
         runAsGroup: 5050
-        fsGroup: 5050
 
   upstream: "http://localhost:80"
 

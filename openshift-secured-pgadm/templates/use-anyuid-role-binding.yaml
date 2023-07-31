@@ -5,7 +5,7 @@ metadata:
   name: pgadmin-scc-anyuid-role-binding
 subjects:
   - kind: ServiceAccount
-    name: default
+    name: proxy
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
