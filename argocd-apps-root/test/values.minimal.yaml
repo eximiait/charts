@@ -1,0 +1,43 @@
+applicationSetRoot:
+  baseChart:
+    enabled: true
+    url: https://git.ips.gba.gob.ar/devops/okd-cluster/okd-cluster-apps.git
+    path: chart-base
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+
+applications:
+  - name: rupa
+    project:
+      name: rupa
+    environments:
+      - name: dev
+        namespace: rupa-dev
+        cluster: https://kubernetes.default.svc
+        argoApplicationName: rupa-dev-gitops
+        argoProjectName: rupa
+        appGitopsRepoURL: https://git.ips.gba.gob.ar/rupa-dev-gitops.git
+        baseChart:
+          parameters:
+            - name: admin
+              value: mbecca
+        jwtTokens:
+          - iat: 1712332996
+            id: argocd-sync
+      - name: test
+        namespace: rupa-test
+        cluster: https://kubernetes.default.svc
+        argoApplicationName: rupa-test-gitops
+        argoProjectName: rupa
+        appGitopsRepoURL: https://git.ips.gba.gob.ar/rupa-test-gitops.git
+      - name: prod
+        namespace: rupa-prod
+        cluster: https://api.prod.example.com:6443
+        argoApplicationName: rupa-prod-gitops
+        argoProjectName: rupa
+        project:
+          groupName: rupa-prod-admin
+        appGitopsRepoURL: https://git.ips.gba.gob.ar/rupa-prod-gitops.git

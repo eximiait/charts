@@ -1,0 +1,56 @@
+{{- $root := . -}}
+{{ range $app := .Values.applications }}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ $app.name }}
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: Namespace
+  namespaceResourceBlacklist:
+    - group: '*'
+      kind: Secret
+  destinations:
+  {{- range $env := $app.environments }}
+  - name: {{ $env.name }}
+    namespace: {{ $env.namespace }}
+    server: {{ $env.cluster }}
+  {{- end }}
+  roles:
+  {{- range $env := $app.environments }}
+  - groups:
+    - {{ if (hasKey $env "project") }}{{ $env.project.groupName | default (printf "%s-%s" $app.name $env.name) }}{{ else }}{{ printf "%s-%s" $app.name $env.name }}{{ end }}
+    name: {{ $app.name }}-{{ $env.name }}-config-role
+    {{- if (hasKey $env "jwtTokens") }}
+    jwtTokens: {{ toYaml $env.jwtTokens | nindent 8 }}
+    {{- end }}
+    policies:
+    - p, proj:{{ $app.name }}:{{ $app.name }}-{{ $env.name }}-config-role, applications, *, {{ $app.name }}/{{ $app.name }}-{{ $env.name }},allow
+  {{- end }}
+  sourceRepos:
+  {{- range $env := $app.environments }}
+  - {{ $env.appGitopsRepoURL | quote }}
+  {{- end }}
+  {{- if (include "argocd-apps-root.baseChartEnabled" $root) | eq "true" }}  
+  - {{ $root.Values.applicationSetRoot.baseChart.url | quote }}
+  {{- end }}
+  
+{{- $hasJwtTokens := false }}
+{{- range $env := $app.environments }}
+  {{- if (hasKey $env "jwtTokens") }}
+    {{- $hasJwtTokens = true }}
+  {{- end }}
+{{- end }}
+{{- if $hasJwtTokens }}
+status:
+  jwtTokensByRole:
+  {{- range $env := $app.environments }}
+  {{- if (hasKey $env "jwtTokens") }}
+    {{ if (hasKey $env "project") }}{{ $env.project.groupName | default (printf "%s-%s" $app.name $env.name) }}:{{ else }}{{ printf "%s-%s" $app.name $env.name }}:{{ end }}
+      {{- toYaml $env.jwtTokens | nindent 8 }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- end }}

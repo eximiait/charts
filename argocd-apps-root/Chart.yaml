@@ -1,0 +1,6 @@
+apiVersion: v2
+name: argocd-apps-root
+description: Chart para implementar el patrón app-of-apps de ArgoCD
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

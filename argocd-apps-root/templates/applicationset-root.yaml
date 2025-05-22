@@ -1,0 +1,41 @@
+{{- if .Values.applications }}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ include "argocd-apps-root.appsetRootName" . }}
+spec:
+  goTemplate: {{ include "argocd-apps-root.appsetGoTemplate" . }}
+  generators:
+    - list:
+      elements:
+      {{- range .Values.applications }}
+        {{- range .environments }}
+        - {{- omit . "jwtTokens" | toYaml | nindent 10 }}
+        {{- end }}
+        {{- end }}
+  template:
+    metadata:
+      name: '{{`{{.argoApplicationName}}`}}'
+    spec:
+      project: '{{`{{.argoProjectName}}`}}'
+      sources:
+        - repoURL: '{{`{{.appGitopsRepoURL}}`}}'
+          targetRevision: main
+          path: '.'
+        {{- if (include "argocd-apps-root.baseChartEnabled" .) | eq "true" }}  
+        - repoURL: {{ .Values.applicationSetRoot.baseChart.url | quote }}
+          targetRevision: {{ .Values.applicationSetRoot.baseChart.targetRevision | quote }}
+          {{- if .Values.applicationSetRoot.baseChart.chart }}
+          chart: {{ .Values.applicationSetRoot.baseChart.chart | quote }}
+          {{- end }}
+          {{- if .Values.applicationSetRoot.baseChart.path }}
+          path: {{ .Values.applicationSetRoot.baseChart.path | quote }}
+          {{- end }}
+          helm: 
+            parameters: '{{`{{ .baseChart.parameters | toYaml | nindent 12 }}`}}'
+        {{- end }}
+      destination:
+        server: '{{`{{.cluster}}`}}'
+        namespace: '{{`{{.namespace}}`}}'
+      {{- include "argocd-apps-root.syncPolicy" . | indent 6 }}
+{{- end }}

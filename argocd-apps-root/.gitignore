@@ -1,0 +1,38 @@
+# Helm chart dependencies
+charts/*.tgz
+charts/*/
+
+# Rendered templates
+*.yaml.rendered
+**/templates/*.rendered
+**/rendered/
+
+# Helm package files
+*.tgz
+
+# Chart lock file (optional, depending on your workflow)
+Chart.lock
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Secrets (just in case)
+*.secret
+*.secrets
