@@ -6,6 +6,33 @@ entries:
         - description: Se agrega metadata para artifacthub.io
           kind: Added
           version: 0.1.1
+        - description: Se arregla problema de identación en list generator
+          kind: Fixed
+          version: 0.1.2
+    apiVersion: v2
+    appVersion: 0.1.2
+    created: "2025-05-22T15:51:32.212917286Z"
+    description: Chart para implementar el patrón app-of-apps de ArgoCD
+    digest: 1bea33b5cda4058c182da26d8518403ac957b3bd996aa496688a1aa26ba02649
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, argocd, app-of-apps
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: argocd-apps-root
+    sources:
+    - https://github.com/eximiait/charts/tree/main/argocd-apps-root
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/argocd-apps-root-0.1.2/argocd-apps-root-0.1.2.tgz
+    version: 0.1.2
+  - annotations:
+      artifacthub.io/changes: |
+        - description: Se agrega metadata para artifacthub.io
+          kind: Added
+          version: 0.1.1
     apiVersion: v2
     appVersion: 0.1.1
     created: "2025-05-22T15:16:43.123313453Z"
@@ -592,4 +619,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2025-05-22T15:16:43.123356854Z"
+generated: "2025-05-22T15:51:32.212964905Z"
