@@ -18,3 +18,6 @@ annotations:
     - description: Se agrega metadata para artifacthub.io
       kind: Added
       version: 0.1.1
+    - description: Se arregla problema de identación en list generator
+      kind: Fixed
+      version: 0.1.2

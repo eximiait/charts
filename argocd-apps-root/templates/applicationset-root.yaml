@@ -5,13 +5,14 @@ metadata:
   name: {{ include "argocd-apps-root.appsetRootName" . }}
 spec:
   goTemplate: {{ include "argocd-apps-root.appsetGoTemplate" . }}
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - list:
-      elements:
-      {{- range .Values.applications }}
-        {{- range .environments }}
-        - {{- omit . "jwtTokens" | toYaml | nindent 10 }}
-        {{- end }}
+        elements:
+        {{- range .Values.applications }}
+          {{- range .environments }}
+          - {{- omit . "jwtTokens" | toYaml | nindent 12 }}
+          {{- end }}
         {{- end }}
   template:
     metadata:
