@@ -1,9 +1,6 @@
 applicationSetRoot:
   baseChart:
-    enabled: true
-    url: https://gitlab.com/chart-base.git
-    path: .
-    targetRevision: main
+    enabled: false
   syncPolicy:
     syncOptions:
       - ApplyOutOfSyncOnly=true
@@ -27,10 +24,6 @@ applications:
         argoApplicationName: app1-dev-gitops
         argoProjectName: app1
         appGitopsRepoURL: https://gitlab.com/app1-dev-gitops.git
-        baseChart:
-          parameters:
-            - name: admin
-              value: mbecca
         jwtTokens:
           - iat: 1712332996
             id: argocd-sync
@@ -44,7 +37,5 @@ applications:
         namespace: app1-prod
         cluster: https://api.prod.example.com:6443
         argoApplicationName: app1-prod-gitops
-        argoProjectName: app1
-        project:
-          groupName: app1-prod-admin
+        argoProjectName: app1        
         appGitopsRepoURL: https://gitlab.com/app1-prod-gitops.git

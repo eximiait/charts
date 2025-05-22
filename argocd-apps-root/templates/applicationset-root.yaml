@@ -23,6 +23,7 @@ spec:
         - repoURL: '{{`{{.appGitopsRepoURL}}`}}'
           targetRevision: main
           path: '.'
+          ref: values
         {{- if (include "argocd-apps-root.baseChartEnabled" .) | eq "true" }}  
         - repoURL: {{ .Values.applicationSetRoot.baseChart.url | quote }}
           targetRevision: {{ .Values.applicationSetRoot.baseChart.targetRevision | quote }}
@@ -32,8 +33,9 @@ spec:
           {{- if .Values.applicationSetRoot.baseChart.path }}
           path: {{ .Values.applicationSetRoot.baseChart.path | quote }}
           {{- end }}
-          helm: 
-            parameters: '{{`{{ .baseChart.parameters | toYaml | nindent 12 }}`}}'
+          helm:
+            valueFiles:
+              - $values/values.yaml
         {{- end }}
       destination:
         server: '{{`{{.cluster}}`}}'
