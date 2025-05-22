@@ -11,7 +11,7 @@ spec:
         elements:
         {{- range .Values.applications }}
           {{- range .environments }}
-          - {{- omit . "jwtTokens" | toYaml | nindent 12 }}
+          - {{ omit . "jwtTokens" | toYaml | indent 12 | trim }}
           {{- end }}
         {{- end }}
   template:

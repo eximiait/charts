@@ -6,12 +6,7 @@ metadata:
   name: {{ $app.name }}
   namespace: argocd
 spec:
-  clusterResourceWhitelist:
-    - group: '*'
-      kind: Namespace
-  namespaceResourceBlacklist:
-    - group: '*'
-      kind: Secret
+  {{- include "argocd-apps-root.appproject.resourceLists" (dict "app" $app "root" $root) | trim | nindent 2 }}
   destinations:
   {{- range $env := $app.environments }}
   - name: {{ $env.name }}

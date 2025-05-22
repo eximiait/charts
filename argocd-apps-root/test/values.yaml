@@ -3,21 +3,26 @@ applicationSetRoot:
   goTemplate: true
   baseChart:
     enabled: true
-    url: https://git.ips.gba.gob.ar/devops/okd-cluster/okd-cluster-apps.git
-    path: chart-base
+    url: https://gitlab.com/chart-base.git
+    path: .
     targetRevision: main
 
 applications:
-  - name: rupa
-    project:
-      name: rupa
+  - name: app1
+    argoProject:
+      clusterResourceWhitelist:
+      - group: '*'
+        kind: Namespace
+      namespaceResourceBlacklist:
+      - group: '*'
+        kind: Secret
     environments:
       - name: dev
-        namespace: rupa-dev
+        namespace: app1-dev
         cluster: https://kubernetes.default.svc
-        argoApplicationName: rupa-dev-gitops
-        argoProjectName: rupa
-        appGitopsRepoURL: https://git.ips.gba.gob.ar/rupa-dev-gitops.git
+        argoApplicationName: app1-dev-gitops
+        argoProjectName: app1
+        appGitopsRepoURL: https://gitlab.com/app1-dev-gitops.git
         baseChart:
           parameters:
             - name: admin
@@ -26,22 +31,22 @@ applications:
           - iat: 1712332996
             id: argocd-sync
       - name: test
-        namespace: rupa-test
+        namespace: app1-test
         cluster: https://kubernetes.default.svc
-        argoApplicationName: rupa-test-gitops
-        argoProjectName: rupa
-        appGitopsRepoURL: https://git.ips.gba.gob.ar/rupa-test-gitops.git
+        argoApplicationName: app1-test-gitops
+        argoProjectName: app1
+        appGitopsRepoURL: https://gitlab.com/app1-test-gitops.git
         jwtTokens:
           - iat: 7373737737
             id: argocd-sync
       - name: prod
-        namespace: rupa-prod
+        namespace: app1-prod
         cluster: https://api.prod.example.com:6443
-        argoApplicationName: rupa-prod-gitops
-        argoProjectName: rupa
+        argoApplicationName: app1-prod-gitops
+        argoProjectName: app1
         project:
-          groupName: rupa-prod-admin
-        appGitopsRepoURL: https://git.ips.gba.gob.ar/rupa-prod-gitops.git
+          groupName: app1-prod-admin
+        appGitopsRepoURL: https://gitlab.com/app1-prod-gitops.git
         jwtTokens:
           - iat: 9685485868
             id: argocd-sync
