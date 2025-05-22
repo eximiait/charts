@@ -12,6 +12,39 @@ entries:
         - description: Se permite configurar globalmente namespaceResourceBlacklist,namespaceResourceWhitelist, clusterResourceWhitelist y clusterResourceBlacklist
           kind: Added
           version: 0.1.3
+        - description: Ajuste manejo de values para el chart base
+          kind: Fixed
+          version: 0.1.4
+    apiVersion: v2
+    appVersion: 0.1.4
+    created: "2025-05-22T19:24:32.946035145Z"
+    description: Chart para implementar el patrón app-of-apps de ArgoCD
+    digest: 57047d51e9427f5d8fc702389861dc7e8960a69ae1597e716fc34eb80826dc61
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, argocd, app-of-apps
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: argocd-apps-root
+    sources:
+    - https://github.com/eximiait/charts/tree/main/argocd-apps-root
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/argocd-apps-root-0.1.4/argocd-apps-root-0.1.4.tgz
+    version: 0.1.4
+  - annotations:
+      artifacthub.io/changes: |
+        - description: Se agrega metadata para artifacthub.io
+          kind: Added
+          version: 0.1.1
+        - description: Se arregla problema de identación en list generator
+          kind: Fixed
+          version: 0.1.2
+        - description: Se permite configurar globalmente namespaceResourceBlacklist,namespaceResourceWhitelist, clusterResourceWhitelist y clusterResourceBlacklist
+          kind: Added
+          version: 0.1.3
     apiVersion: v2
     appVersion: 0.1.3
     created: "2025-05-22T17:37:26.196970304Z"
@@ -649,4 +682,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2025-05-22T17:37:26.197023003Z"
+generated: "2025-05-22T19:24:32.946078757Z"
