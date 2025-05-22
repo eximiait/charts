@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  argocd-apps-root:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-05-22T15:09:43.206899895Z"
+    description: Chart para implementar el patrón app-of-apps de ArgoCD
+    digest: 68e8adcc36bef0de62e9fd4358eb4bb6b1822eb302afcdf8d20662fde1e53bef
+    name: argocd-apps-root
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/argocd-apps-root-0.1.0/argocd-apps-root-0.1.0.tgz
+    version: 0.1.0
   openshift-secured-app:
   - annotations:
       artifacthub.io/changes: |
@@ -557,4 +568,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2023-07-31T20:51:43.29672016Z"
+generated: "2025-05-22T15:09:43.206953605Z"
