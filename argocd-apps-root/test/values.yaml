@@ -16,13 +16,6 @@ argoProjectGlobal:
 
 applications:
   - name: app1
-    argoProject:
-      clusterResourceWhitelist:
-      - group: '*'
-        kind: Namespace
-      namespaceResourceBlacklist:
-      - group: '*'
-        kind: Secret
     environments:
       - name: dev
         namespace: app1-dev
@@ -50,6 +43,38 @@ applications:
         project:
           groupName: app1-prod-admin
         appGitopsRepoURL: https://github.com/eximiait/app1-prod-gitops.git
+        jwtTokens:
+          - iat: 9685485868
+            id: argocd-sync
+
+  - name: app2
+    environments:
+      - name: dev
+        namespace: app2-dev
+        cluster: https://kubernetes.default.svc
+        argoApplicationName: app2-dev-gitops
+        argoProjectName: app2
+        appGitopsRepoURL: https://github.com/eximiait/app2-dev-gitops.git
+        jwtTokens:
+          - iat: 1712332996
+            id: argocd-sync
+      - name: test
+        namespace: app2-test
+        cluster: https://kubernetes.default.svc
+        argoApplicationName: app2-test-gitops
+        argoProjectName: app2
+        appGitopsRepoURL: https://github.com/eximiait/app2-test-gitops.git
+        jwtTokens:
+          - iat: 7373737737
+            id: argocd-sync
+      - name: prod
+        namespace: app2-prod
+        cluster: https://api.prod.example.com:6443
+        argoApplicationName: app2-prod-gitops
+        argoProjectName: app2
+        project:
+          groupName: app2-prod-admin
+        appGitopsRepoURL: https://github.com/eximiait/app2-prod-gitops.git
         jwtTokens:
           - iat: 9685485868
             id: argocd-sync

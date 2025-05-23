@@ -120,3 +120,88 @@ helm install argocd-apps-root eximiait/argocd-apps-root \
   --values values.yaml \
   --version x.y.z
 ```
+
+## Configuración
+
+El chart utiliza una estructura de valores jerárquica para definir las aplicaciones y sus ambientes. A continuación se detallan todas las opciones de configuración disponibles:
+
+| Parámetro | Descripción | Valor por defecto |
+|-----------|-------------|-------------------|
+| **applicationSetGlobal** | Configuración global que se aplica a todos los ApplicationSets | |
+| `applicationSetGlobal.baseChart.enabled` | Habilita el uso de un chart base para instalar manifiestos comunes a todas las aplicaciones (quota, network-policies, etc) | `false` |
+| `applicationSetGlobal.baseChart.url` | URL del repositorio git donde se encuentra el chart base | `""` |
+| `applicationSetGlobal.baseChart.path` | Ruta dentro del repositorio donde se encuentra el chart base | `"."` |
+| `applicationSetGlobal.baseChart.targetRevision` | Revisión del repositorio a utilizar para el chart base | `"main"` |
+| **argoProjectGlobal** | Configuración global para todos los AppProjects | |
+| `argoProjectGlobal.clusterResourceWhitelist` | Lista de recursos a nivel de cluster permitidos | `[]` |
+| `argoProjectGlobal.clusterResourceBlacklist` | Lista de recursos a nivel de cluster prohibidos | `[]` |
+| `argoProjectGlobal.namespaceResourceWhitelist` | Lista de recursos a nivel de namespace permitidos | `[]` |
+| `argoProjectGlobal.namespaceResourceBlacklist` | Lista de recursos a nivel de namespace prohibidos | `[]` |
+| **applications** | Lista de aplicaciones a gestionar | `[]` |
+| `applications[].name` | Nombre de la aplicación, se usará para el nombre del applicationSet | |
+| `applications[].environments` | Lista de ambientes para la aplicación | `[]` |
+| `applications[].environments[].name` | Nombre del ambiente (dev, test, prod, etc.) | |
+| `applications[].environments[].namespace` | Namespace donde se implementará la aplicación | |
+| `applications[].environments[].cluster` | URL del API server del cluster donde se implementará | |
+| `applications[].environments[].argoApplicationName` | Nombre de la aplicación en ArgoCD | |
+| `applications[].environments[].argoProjectName` | Nombre del proyecto ArgoCD asociado | |
+| `applications[].environments[].appGitopsRepoURL` | URL del repositorio git con la configuración GitOps de la aplicación | |
+| `applications[].environments[].project` | Configuración específica para el AppProject | |
+| `applications[].environments[].project.groupName` | Nombre del grupo con acceso al AppProject | |
+| `applications[].environments[].jwtTokens` | Lista de tokens JWT para acceso a la API | `[]` |
+| `applications[].environments[].jwtTokens[].iat` | Timestamp de emisión del token JWT | |
+| `applications[].environments[].jwtTokens[].id` | Identificador del token JWT | |
+
+### Ejemplo completo de configuración
+
+```yaml
+applicationSetGlobal:
+  baseChart:
+    enabled: true
+    url: https://github.com/eximiait/chart-base.git
+    path: .
+    targetRevision: main
+
+# Configuración global para aplicar a todos los appProjects
+argoProjectGlobal:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  namespaceResourceBlacklist:
+  - group: '*'
+    kind: Secret
+
+applications:
+  - name: app1
+    environments:
+      - name: dev
+        namespace: app1-dev
+        cluster: https://kubernetes.default.svc
+        argoApplicationName: app1-dev-gitops
+        argoProjectName: app1
+        appGitopsRepoURL: https://github.com/eximiait/app1-dev-gitops.git
+        jwtTokens:
+          - iat: 1712332996
+            id: argocd-sync
+      - name: test
+        namespace: app1-test
+        cluster: https://kubernetes.default.svc
+        argoApplicationName: app1-test-gitops
+        argoProjectName: app1
+        appGitopsRepoURL: https://github.com/eximiait/app1-test-gitops.git
+        jwtTokens:
+          - iat: 7373737737
+            id: argocd-sync
+      - name: prod
+        namespace: app1-prod
+        cluster: https://api.prod.example.com:6443
+        argoApplicationName: app1-prod-gitops
+        argoProjectName: app1
+        project:
+          groupName: app1-prod-admin
+        appGitopsRepoURL: https://github.com/eximiait/app1-prod-gitops.git
+        jwtTokens:
+          - iat: 9685485868
+            id: argocd-sync
+```
+
