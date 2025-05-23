@@ -1,12 +1,12 @@
-# Argocd Apps Root
+# ArgoCD Apps Root
 
 ## Objetivo
 
-El objetivo de este chart es proveer una forma sencilla de poder implementar el patrón app-of-apps con ArgoCD.
+El objetivo de este chart es proveer una forma sencilla para poder implementar el patrón app-of-apps con ArgoCD.
 
 El patrón app-of-apps permite gestionar múltiples aplicaciones y ambientes en Kubernetes desde un único punto de entrada, permitiendo una gestión centralizada y simplificada de las configuraciones.
 
-A través de un único inventario (values.yaml) se pueden generar los AppProject y ApplicationSet correspondientes a cada aplicación y ambiente.
+A través de un único inventario (values.yaml) se pueden generar los AppProjects y ApplicationSets correspondientes a cada aplicación y ambiente.
 
 ## Ejemplo
 
@@ -53,13 +53,13 @@ applications:
             id: argocd-sync
 ```
 
-A partir de este inventario se generarán automaticamente los AppProject y ApplicationSet correspondientes.
+A partir de este inventario se generarán automáticamente los AppProjects y ApplicationSets correspondientes.
 
 ## Instalación
 
-Se recomienda la instalación mediante ArgoCD para poder versionar el inventario (values.yaml).
+Se recomienda la instalación desde un repo Git y ArgoCD para poder versionar el inventario (values.yaml).
 
-#### Instalación mediante ArgoCD
+#### Instalación mediante Git y ArgoCD
 
 Crear un repositorio git con la definición del Chart (Chart.yaml) y el inventario (values.yaml).
 Dentro del Chart.yaml se debe definir como dependencia el chart de argocd-apps-root.
