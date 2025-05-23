@@ -59,7 +59,7 @@ A partir de este inventario se generarán automaticamente los AppProject y Appli
 
 Se recomienda la instalación mediante ArgoCD para poder versionar el inventario (values.yaml).
 
-### Instalación mediante ArgoCD
+#### Instalación mediante ArgoCD
 
 Crear un repositorio git con la definición del Chart (Chart.yaml) y el inventario (values.yaml).
 Dentro del Chart.yaml se debe definir como dependencia el chart de argocd-apps-root.
@@ -78,7 +78,7 @@ dependencies:
     repository: https://charts.eximiait.com.ar
 ```
 
-Luego crar un Application en ArgoCD apuntando al repositorio git creado anteriormente.
+Luego crear un Application en ArgoCD apuntando al repositorio git creado anteriormente.
 
 ```yaml
 # argocd-app.yaml
@@ -109,7 +109,7 @@ spec:
 
 La creación de esta application debe formar parte de la post-instalación de ArgoCD, ya que es la encargada de crear todas las aplicaciones y ambientes.
 
-### Instalación con Helm
+#### Instalación con Helm
 
 ```bash
 helm repo add eximiait https://charts.eximiait.com.ar
@@ -123,15 +123,17 @@ helm install argocd-apps-root eximiait/argocd-apps-root \
 
 ## Configuración
 
-El chart utiliza una estructura de valores jerárquica para definir las aplicaciones y sus ambientes. A continuación se detallan todas las opciones de configuración disponibles:
+El chart utiliza una estructura de valores jerárquica para definir los proyectos y las aplicaciones y sus ambientes.
+
+A continuación se detallan todas las opciones de configuración disponibles:
 
 | Parámetro | Descripción | Valor por defecto |
 |-----------|-------------|-------------------|
 | **applicationSetGlobal** | Configuración global que se aplica a todos los ApplicationSets | |
 | `applicationSetGlobal.baseChart.enabled` | Habilita el uso de un chart base para instalar manifiestos comunes a todas las aplicaciones (quota, network-policies, etc) | `false` |
 | `applicationSetGlobal.baseChart.url` | URL del repositorio git donde se encuentra el chart base | `""` |
-| `applicationSetGlobal.baseChart.path` | Ruta dentro del repositorio donde se encuentra el chart base | `"."` |
-| `applicationSetGlobal.baseChart.targetRevision` | Revisión del repositorio a utilizar para el chart base | `"main"` |
+| `applicationSetGlobal.baseChart.path` | Ruta dentro del repositorio donde se encuentra el chart base | `""` |
+| `applicationSetGlobal.baseChart.targetRevision` | Revisión del repositorio a utilizar para el chart base | `""` |
 | **argoProjectGlobal** | Configuración global para todos los AppProjects | |
 | `argoProjectGlobal.clusterResourceWhitelist` | Lista de recursos a nivel de cluster permitidos | `[]` |
 | `argoProjectGlobal.clusterResourceBlacklist` | Lista de recursos a nivel de cluster prohibidos | `[]` |
