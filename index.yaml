@@ -3,6 +3,30 @@ entries:
   argocd-apps-root:
   - annotations:
       artifacthub.io/changes: |
+        - description: Ajustes en documentación
+          kind: Fixed
+          version: 0.2.3
+    apiVersion: v2
+    appVersion: 0.2.3
+    created: "2025-05-23T21:02:05.159280092Z"
+    description: Chart para implementar el patrón app-of-apps de ArgoCD
+    digest: 09004c213828453a42c614af6d123dcc6388ffd3d08746fa5afc0c60b617103c
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, argocd, app-of-apps
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: argocd-apps-root
+    sources:
+    - https://github.com/eximiait/charts/tree/main/argocd-apps-root
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/argocd-apps-root-0.2.3/argocd-apps-root-0.2.3.tgz
+    version: 0.2.3
+  - annotations:
+      artifacthub.io/changes: |
         - description: Ajustes en documentación y ejemplos
           kind: Fixed
           version: 0.2.2
@@ -808,4 +832,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2025-05-23T19:25:42.182002658Z"
+generated: "2025-05-23T21:02:05.159346847Z"
