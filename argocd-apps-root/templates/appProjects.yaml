@@ -1,5 +1,6 @@
 {{- $root := . -}}
 {{ range $app := .Values.applications }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -29,7 +30,7 @@ spec:
   - {{ $env.appGitopsRepoURL | quote }}
   {{- end }}
   {{- if (include "argocd-apps-root.baseChartEnabled" $root) | eq "true" }}  
-  - {{ $root.Values.applicationSetRoot.baseChart.url | quote }}
+  - {{ $root.Values.applicationSetGlobal.baseChart.url | quote }}
   {{- end }}
   
 {{- $hasJwtTokens := false }}

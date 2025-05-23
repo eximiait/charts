@@ -1,6 +1,4 @@
-applicationSetRoot:
-  name: apps-root
-  goTemplate: true
+applicationSetGlobal:
   baseChart:
     enabled: true
     url: https://github.com/eximiait/chart-base.git

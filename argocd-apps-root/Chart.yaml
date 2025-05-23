@@ -2,8 +2,8 @@ apiVersion: v2
 name: argocd-apps-root
 description: Chart para implementar el patrón app-of-apps de ArgoCD
 type: application
-version: 0.1.5
-appVersion: 0.1.5
+version: 0.2.0
+appVersion: 0.2.0
 keywords:
   - openshift, argocd, app-of-apps
 home: https://github.com/eximiait/charts
@@ -30,3 +30,9 @@ annotations:
     - description: Se agregan valores por defecto para el appProject
       kind: Added
       version: 0.1.5
+    - description: Se genera un applicationSet por cada aplicación
+      kind: Added
+      version: 0.2.0
+    - description: Se genera docuementación
+      kind: Added
+      version: 0.2.0

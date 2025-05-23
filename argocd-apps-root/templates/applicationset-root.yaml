@@ -1,18 +1,18 @@
-{{- if .Values.applications }}
+{{- $root := . -}}
+{{ range $app := .Values.applications }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: {{ include "argocd-apps-root.appsetRootName" . }}
+  name: {{ $app.name }}
 spec:
-  goTemplate: {{ include "argocd-apps-root.appsetGoTemplate" . }}
+  goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
     - list:
         elements:
-        {{- range .Values.applications }}
-          {{- range .environments }}
-          - {{ omit . "jwtTokens" | toYaml | indent 12 | trim }}
-          {{- end }}
+        {{- range $app.environments }}
+          - {{ omit . "jwtTokens" | toYaml | indent 12 | trim }}        
         {{- end }}
   template:
     metadata:
@@ -24,14 +24,14 @@ spec:
           targetRevision: main
           path: '.'
           ref: values
-        {{- if (include "argocd-apps-root.baseChartEnabled" .) | eq "true" }}  
-        - repoURL: {{ .Values.applicationSetRoot.baseChart.url | quote }}
-          targetRevision: {{ .Values.applicationSetRoot.baseChart.targetRevision | quote }}
-          {{- if .Values.applicationSetRoot.baseChart.chart }}
-          chart: {{ .Values.applicationSetRoot.baseChart.chart | quote }}
+        {{- if $.Values.applicationSetGlobal.baseChart }}
+        - repoURL: {{  $.Values.applicationSetGlobal.baseChart.url | quote }}
+          targetRevision: {{ $.Values.applicationSetGlobal.baseChart.targetRevision | quote }}
+          {{- if $.Values.applicationSetGlobal.baseChart.chart }}
+          chart: {{ $.Values.applicationSetGlobal.baseChart.chart | quote }}
           {{- end }}
-          {{- if .Values.applicationSetRoot.baseChart.path }}
-          path: {{ .Values.applicationSetRoot.baseChart.path | quote }}
+          {{- if $.Values.applicationSetGlobal.baseChart.path }}
+          path: {{ $.Values.applicationSetGlobal.baseChart.path | quote }}
           {{- end }}
           helm:
             valueFiles:
@@ -40,5 +40,5 @@ spec:
       destination:
         server: '{{`{{.cluster}}`}}'
         namespace: '{{`{{.namespace}}`}}'
-      {{- include "argocd-apps-root.syncPolicy" . | trim | nindent 6 }}
+      {{- include "argocd-apps-root.syncPolicy" (dict "root" $root) | trim | nindent 6 }}
 {{- end }}

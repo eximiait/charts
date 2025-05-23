@@ -1,14 +1,22 @@
-applicationSetRoot:
+applicationSetGlobal:
   baseChart:
     enabled: false
+
+argoProjectGlobal:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  namespaceResourceBlacklist:
+  - group: '*'
+    kind: Secret
 
 applications:
   - name: app1    
     environments:
       - name: dev
         namespace: app1-dev
+        argoApplicationName: app1-test-gitops
         cluster: https://kubernetes.default.svc
-        argoApplicationName: app1-dev-gitops
         argoProjectName: app1
         appGitopsRepoURL: https://gitlab.com/app1-dev-gitops.git
         jwtTokens:
@@ -26,3 +34,15 @@ applications:
         argoApplicationName: app1-prod-gitops
         argoProjectName: app1        
         appGitopsRepoURL: https://gitlab.com/app1-prod-gitops.git
+  
+  - name: app2  
+    environments:
+      - name: dev
+        namespace: app2-dev
+        argoApplicationName: app2-dev-gitops
+        cluster: https://kubernetes.default.svc
+        argoProjectName: app2
+        appGitopsRepoURL: https://gitlab.com/app2-dev-gitops.git
+        jwtTokens:
+          - iat: 1712332996
+            id: argocd-sync
