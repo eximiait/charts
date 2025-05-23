@@ -3,7 +3,7 @@ applicationSetRoot:
   goTemplate: true
   baseChart:
     enabled: true
-    url: https://gitlab.com/chart-base.git
+    url: https://github.com/eximiait/chart-base.git
     path: .
     targetRevision: main
 
@@ -15,22 +15,16 @@ applications:
         cluster: https://kubernetes.default.svc
         argoApplicationName: app1-dev-gitops
         argoProjectName: app1
-        appGitopsRepoURL: https://gitlab.com/app1-dev-gitops.git
-        baseChart:
-          parameters:
-            - name: admin
-              value: mbecca
+        appGitopsRepoURL: https://github.com/eximiait/app1-dev-gitops.git
       - name: test
         namespace: app1-test
         cluster: https://kubernetes.default.svc
         argoApplicationName: app1-test-gitops
         argoProjectName: app1
-        appGitopsRepoURL: https://gitlab.com/app1-test-gitops.git
+        appGitopsRepoURL: https://github.com/eximiait/app1-test-gitops.git
       - name: prod
         namespace: app1-prod
         cluster: https://api.prod.example.com:6443
         argoApplicationName: app1-prod-gitops
         argoProjectName: app1
-        project:
-          groupName: app1-prod-admin
-        appGitopsRepoURL: https://gitlab.com/app1-prod-gitops.git
+        appGitopsRepoURL: https://github.com/eximiait/app1-prod-gitops.git

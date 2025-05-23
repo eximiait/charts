@@ -40,5 +40,5 @@ spec:
       destination:
         server: '{{`{{.cluster}}`}}'
         namespace: '{{`{{.namespace}}`}}'
-      {{- include "argocd-apps-root.syncPolicy" . | indent 6 }}
+      {{- include "argocd-apps-root.syncPolicy" . | trim | nindent 6 }}
 {{- end }}

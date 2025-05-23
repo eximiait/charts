@@ -38,5 +38,10 @@ Get syncPolicy
 {{- if .Values.applicationSetRoot.syncPolicy }}
 syncPolicy:  
 {{ toYaml .Values.applicationSetRoot.syncPolicy | indent 2 }}
+{{- else -}}
+syncPolicy:
+  syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
 {{- end }}
 {{- end }}

@@ -3,9 +3,18 @@ applicationSetRoot:
   goTemplate: true
   baseChart:
     enabled: true
-    url: https://gitlab.com/chart-base.git
+    url: https://github.com/eximiait/chart-base.git
     path: .
     targetRevision: main
+
+# Configuración global para aplicar a todos los appProjects
+argoProjectGlobal:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  namespaceResourceBlacklist:
+  - group: '*'
+    kind: Secret
 
 applications:
   - name: app1
@@ -22,11 +31,7 @@ applications:
         cluster: https://kubernetes.default.svc
         argoApplicationName: app1-dev-gitops
         argoProjectName: app1
-        appGitopsRepoURL: https://gitlab.com/app1-dev-gitops.git
-        baseChart:
-          parameters:
-            - name: admin
-              value: mbecca
+        appGitopsRepoURL: https://github.com/eximiait/app1-dev-gitops.git
         jwtTokens:
           - iat: 1712332996
             id: argocd-sync
@@ -35,7 +40,7 @@ applications:
         cluster: https://kubernetes.default.svc
         argoApplicationName: app1-test-gitops
         argoProjectName: app1
-        appGitopsRepoURL: https://gitlab.com/app1-test-gitops.git
+        appGitopsRepoURL: https://github.com/eximiait/app1-test-gitops.git
         jwtTokens:
           - iat: 7373737737
             id: argocd-sync
@@ -46,7 +51,7 @@ applications:
         argoProjectName: app1
         project:
           groupName: app1-prod-admin
-        appGitopsRepoURL: https://gitlab.com/app1-prod-gitops.git
+        appGitopsRepoURL: https://github.com/eximiait/app1-prod-gitops.git
         jwtTokens:
           - iat: 9685485868
             id: argocd-sync

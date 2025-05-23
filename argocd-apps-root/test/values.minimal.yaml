@@ -1,19 +1,6 @@
 applicationSetRoot:
   baseChart:
     enabled: false
-  syncPolicy:
-    syncOptions:
-      - ApplyOutOfSyncOnly=true
-      - CreateNamespace=true
-
-# Configuración global para aplicar a todos los appProjects
-argoProjectGlobal:
-  clusterResourceWhitelist:
-  - group: '*'
-    kind: Namespace
-  namespaceResourceBlacklist:
-  - group: '*'
-    kind: Secret
 
 applications:
   - name: app1    
