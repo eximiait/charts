@@ -1,14 +1,14 @@
 # ArgoCD Apps Root
 
-## Objetivo
+## Purpose
 
-El objetivo de este chart es proveer una forma sencilla para poder implementar el patrón app-of-apps con ArgoCD.
+The purpose of this chart is to provide an easy way to implement the app-of-apps pattern with ArgoCD.
 
-El patrón app-of-apps permite gestionar múltiples aplicaciones y ambientes en Kubernetes desde un único punto de entrada, permitiendo una gestión centralizada y simplificada de las configuraciones.
+The app-of-apps pattern allows you to manage multiple applications and environments in Kubernetes from a single entry point, enabling centralized and simplified configuration management.
 
-A través de un único inventario (values.yaml) se pueden generar los AppProjects y ApplicationSets correspondientes a cada aplicación y ambiente.
+Through a single inventory file (values.yaml), the corresponding AppProjects and ApplicationSets for each application and environment can be generated.
 
-## Ejemplo
+## Example
 
 ```yaml
 # values.yaml
@@ -53,22 +53,22 @@ applications:
             id: argocd-sync
 ```
 
-A partir de este inventario se generarán automáticamente los AppProjects y ApplicationSets correspondientes.
+From this inventory, the corresponding AppProjects and ApplicationSets will be generated automatically.
 
-## Instalación
+## Installation
 
-Se recomienda la instalación desde un repo Git y ArgoCD para poder versionar el inventario (values.yaml).
+It is recommended to install from a Git repo and ArgoCD to version the inventory (values.yaml).
 
-#### Instalación mediante Git y ArgoCD
+#### Installation via Git and ArgoCD
 
-Crear un repositorio git con la definición del Chart (Chart.yaml) y el inventario (values.yaml).
-Dentro del Chart.yaml se debe definir como dependencia el chart de argocd-apps-root.
+Create a git repository with the Chart definition (Chart.yaml) and the inventory (values.yaml).
+Within Chart.yaml, you must define the argocd-apps-root chart as a dependency.
 
 ```yaml
 # Chart.yaml
 apiVersion: v2
 name: apps
-description: Repositorio para implementar el patrón app-of-apps con ArgoCD
+description: Repository to implement the app-of-apps pattern with ArgoCD
 type: application
 version: 0.1.0
 appVersion: "1.0"
@@ -78,7 +78,7 @@ dependencies:
     repository: https://charts.eximiait.com.ar
 ```
 
-Luego crear un Application en ArgoCD apuntando al repositorio git creado anteriormente.
+Then create an Application in ArgoCD pointing to the previously created git repository.
 
 ```yaml
 # argocd-app.yaml
@@ -107,9 +107,9 @@ spec:
       - CreateNamespace=true
 ```
 
-La creación de esta application debe formar parte de la post-instalación de ArgoCD, ya que es la encargada de crear todas las aplicaciones y ambientes.
+The creation of this application should be part of the ArgoCD post-installation, as it is responsible for creating all applications and environments.
 
-#### Instalación con Helm
+#### Installation with Helm
 
 ```bash
 helm repo add eximiait https://charts.eximiait.com.ar
@@ -121,40 +121,40 @@ helm install argocd-apps-root eximiait/argocd-apps-root \
   --version x.y.z
 ```
 
-## Configuración
+## Configuration
 
-El chart utiliza una estructura de valores jerárquica para definir los proyectos y las aplicaciones y sus ambientes.
+The chart uses a hierarchical values structure to define projects, applications, and their environments.
 
-A continuación se detallan todas las opciones de configuración disponibles:
+Below are all available configuration options:
 
-| Parámetro | Descripción | Valor por defecto |
-|-----------|-------------|-------------------|
-| **applicationSetGlobal** | Configuración global que se aplica a todos los ApplicationSets | |
-| `applicationSetGlobal.baseChart.enabled` | Habilita el uso de un chart base para instalar manifiestos comunes a todas las aplicaciones (quota, network-policies, etc) | `false` |
-| `applicationSetGlobal.baseChart.url` | URL del repositorio git donde se encuentra el chart base | `""` |
-| `applicationSetGlobal.baseChart.path` | Ruta dentro del repositorio donde se encuentra el chart base | `""` |
-| `applicationSetGlobal.baseChart.targetRevision` | Revisión del repositorio a utilizar para el chart base | `""` |
-| **argoProjectGlobal** | Configuración global para todos los AppProjects | |
-| `argoProjectGlobal.clusterResourceWhitelist` | Lista de recursos a nivel de cluster permitidos | `[]` |
-| `argoProjectGlobal.clusterResourceBlacklist` | Lista de recursos a nivel de cluster prohibidos | `[]` |
-| `argoProjectGlobal.namespaceResourceWhitelist` | Lista de recursos a nivel de namespace permitidos | `[]` |
-| `argoProjectGlobal.namespaceResourceBlacklist` | Lista de recursos a nivel de namespace prohibidos | `[]` |
-| **applications** | Lista de aplicaciones a gestionar | `[]` |
-| `applications[].name` | Nombre de la aplicación, se usará para el nombre del applicationSet | |
-| `applications[].environments` | Lista de ambientes para la aplicación | `[]` |
-| `applications[].environments[].name` | Nombre del ambiente (dev, test, prod, etc.) | |
-| `applications[].environments[].namespace` | Namespace donde se implementará la aplicación | |
-| `applications[].environments[].cluster` | URL del API server del cluster donde se implementará | |
-| `applications[].environments[].argoApplicationName` | Nombre de la aplicación en ArgoCD | |
-| `applications[].environments[].argoProjectName` | Nombre del proyecto ArgoCD asociado | |
-| `applications[].environments[].appGitopsRepoURL` | URL del repositorio git con la configuración GitOps de la aplicación | |
-| `applications[].environments[].project` | Configuración específica para el AppProject | |
-| `applications[].environments[].project.groupName` | Nombre del grupo con acceso al AppProject | |
-| `applications[].environments[].jwtTokens` | Lista de tokens JWT para acceso a la API | `[]` |
-| `applications[].environments[].jwtTokens[].iat` | Timestamp de emisión del token JWT | |
-| `applications[].environments[].jwtTokens[].id` | Identificador del token JWT | |
+| Parameter | Description | Default value |
+|-----------|-------------|--------------|
+| **applicationSetGlobal** | Global configuration applied to all ApplicationSets | |
+| `applicationSetGlobal.baseChart.enabled` | Enables the use of a base chart to install manifests common to all applications (quota, network-policies, etc) | `false` |
+| `applicationSetGlobal.baseChart.url` | Git repository URL where the base chart is located | `""` |
+| `applicationSetGlobal.baseChart.path` | Path within the repository where the base chart is located | `""` |
+| `applicationSetGlobal.baseChart.targetRevision` | Repository revision to use for the base chart | `""` |
+| **argoProjectGlobal** | Global configuration for all AppProjects | |
+| `argoProjectGlobal.clusterResourceWhitelist` | List of allowed cluster-level resources | `[]` |
+| `argoProjectGlobal.clusterResourceBlacklist` | List of forbidden cluster-level resources | `[]` |
+| `argoProjectGlobal.namespaceResourceWhitelist` | List of allowed namespace-level resources | `[]` |
+| `argoProjectGlobal.namespaceResourceBlacklist` | List of forbidden namespace-level resources | `[]` |
+| **applications** | List of applications to manage | `[]` |
+| `applications[].name` | Application name, used for the ApplicationSet name | |
+| `applications[].environments` | List of environments for the application | `[]` |
+| `applications[].environments[].name` | Environment name (dev, test, prod, etc.) | |
+| `applications[].environments[].namespace` | Namespace where the application will be deployed | |
+| `applications[].environments[].cluster` | API server URL of the cluster where it will be deployed | |
+| `applications[].environments[].argoApplicationName` | Name of the application in ArgoCD | |
+| `applications[].environments[].argoProjectName` | Name of the associated ArgoCD project | |
+| `applications[].environments[].appGitopsRepoURL` | Git repository URL with the application's GitOps configuration | |
+| `applications[].environments[].project` | Specific configuration for the AppProject | |
+| `applications[].environments[].project.groupName` | Name of the group with access to the AppProject | |
+| `applications[].environments[].jwtTokens` | List of JWT tokens for API access | `[]` |
+| `applications[].environments[].jwtTokens[].iat` | JWT token issued-at timestamp | |
+| `applications[].environments[].jwtTokens[].id` | JWT token identifier | |
 
-### Ejemplo completo de configuración
+### Full configuration example
 
 ```yaml
 applicationSetGlobal:
@@ -164,7 +164,7 @@ applicationSetGlobal:
     path: .
     targetRevision: main
 
-# Configuración global para aplicar a todos los appProjects
+# Global configuration to apply to all appProjects
 argoProjectGlobal:
   clusterResourceWhitelist:
   - group: '*'
