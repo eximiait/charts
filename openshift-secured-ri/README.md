@@ -27,13 +27,13 @@ helm repo update
 To install the Secured RedisInsight Chart from the EximiaIT repository with the release name `my-release`, run the following command:
 
 ```sh
-helm install my-release eximiait/openshift-secured-redisinsight
+helm install my-release eximiait/openshift-secured-redisInsight
 ```
 
 You can also customize the installation by specifying a `values.yaml` file:
 
 ```sh
-helm install my-release eximiait/openshift-secured-redisinsight -f values.yaml
+helm install my-release eximiait/openshift-secured-redisInsight -f values.yaml
 ```
 
 ## Configuration
