@@ -8,7 +8,7 @@ The application is secured using [OpenShift oauth-proxy](https://github.com/open
 ## Features
 - **PgAdmin**: Is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.
 
-- **OAuth-proxy**: The OAuth proxy is an integral part of our security setup. It stands as a gatekeeper between the user and the RedisInsight application, providing a protective layer of authentication and authorization.
+- **OAuth-proxy**: The OAuth proxy is an integral part of our security setup. It stands as a gatekeeper between the user and the PgAdmin application, providing a protective layer of authentication and authorization.
 
 ## Pre-requisites
 
