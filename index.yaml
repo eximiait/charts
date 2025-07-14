@@ -586,6 +586,34 @@ entries:
   openshift-secured-redisInsight:
   - annotations:
       artifacthub.io/changes: |
+        - description: redisinsight typo fix
+          kind: fixed
+          version: 0.9.1
+    apiVersion: v2
+    created: "2025-07-14T14:27:49.277452745Z"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.3.1
+    description: A secured version of RedisInsight for OpenShift
+    digest: 08b24fbffd41a0bf6dc74e25a0af607d5cdc292d8407857496af0ca19c7c471f
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-ri
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.9.1/openshift-secured-redisInsight-0.9.1.tgz
+    version: 0.9.1
+  - annotations:
+      artifacthub.io/changes: |
         - description: Add envs configmap to chart
           kind: Added
           version: 0.9.0
@@ -856,4 +884,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2025-06-02T13:45:54.081858788Z"
+generated: "2025-07-14T14:27:49.277524781Z"
