@@ -63,9 +63,9 @@ The following table lists the configurable parameters of the Secured RedisInsigh
 | `base.containers[0].volumeMounts[0].mountPath`         | Path where the volume should be mounted in the container                                                                                | `"/db"`                                          |
 | `base.upstream`                                        | Upstream URL for the OAuth Proxy                                                                                                        | `"http://localhost:8001"`                        |
 | `base.cookieSecret`                                    | Secret used to encrypt OAuth cookies                                                                                                    | `"bA7kPuPzko-igWaLPhVDWVj_VhENVnVcHce6rYQwu_s="` |
-| `pvc.enabled`                                    | Used to create a PVC                                                                                                    | `false` |
-| `pvc.size`                                    | Used to indicate a PVC size                                                                                                    | `1Gi` |
-
+| `base.route.host`                                      | Route host                                                                                                                              | `changeme.org` |
+| `pvc.enabled`                                          | Used to create a PVC                                                                                                                    | `false` |
+| `pvc.size`                                             | Used to indicate a PVC size                                                                                                             | `1Gi` |
 These parameters can be set in the `values.yaml` file or passed on the command line during chart installation. For example:
 
 ```sh
