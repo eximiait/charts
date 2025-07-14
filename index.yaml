@@ -614,6 +614,34 @@ entries:
   openshift-secured-redisInsight:
   - annotations:
       artifacthub.io/changes: |
+        - description: base.route.host parameter added
+          kind: added
+          version: 0.9.2
+    apiVersion: v2
+    created: "2025-07-14T19:33:16.992434774Z"
+    dependencies:
+    - alias: base
+      name: openshift-secured-app
+      repository: https://charts.eximiait.com.ar
+      version: 0.3.1
+    description: A secured version of RedisInsight for OpenShift
+    digest: 1acf5d21c460cd37025f720283793dda0a5b84c86dbc4afcf631064be30d12c3
+    home: https://github.com/eximiait/charts
+    keywords:
+    - openshift, oauth, redis, redisinsight
+    maintainers:
+    - email: info.eximia.it@gmail.com
+      name: eximiait
+      url: https://www.eximiait.com.ar
+    name: openshift-secured-redisInsight
+    sources:
+    - https://github.com/eximiait/charts/tree/main/openshift-secured-ri
+    type: application
+    urls:
+    - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.9.2/openshift-secured-redisInsight-0.9.2.tgz
+    version: 0.9.2
+  - annotations:
+      artifacthub.io/changes: |
         - description: redisinsight typo fix
           kind: fixed
           version: 0.9.1
@@ -912,4 +940,4 @@ entries:
     urls:
     - https://github.com/eximiait/charts/releases/download/openshift-secured-redisInsight-0.4.0/openshift-secured-redisInsight-0.4.0.tgz
     version: 0.4.0
-generated: "2025-07-14T14:38:55.855073101Z"
+generated: "2025-07-14T19:33:16.992530454Z"
