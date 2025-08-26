@@ -2,7 +2,7 @@ apiVersion: v2
 description: A secured version of PgAdmin for OpenShift
 name: openshift-secured-pgadmin
 type: application
-version: 0.1.4
+version: 0.2.0
 keywords:
   - openshift, oauth, pgadmin
 home: https://github.com/eximiait/charts
@@ -19,6 +19,6 @@ dependencies:
     repository: https://charts.eximiait.com.ar
 annotations:
   artifacthub.io/changes: |
-    - description: Readme fix
+    - description: SCC anyuid replaced by nonroot
       kind: fixed
-      version: 0.1.4
+      version: 0.2.0
