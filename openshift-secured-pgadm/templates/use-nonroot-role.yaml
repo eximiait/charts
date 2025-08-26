@@ -2,7 +2,7 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: scc-use-anyuid-role
+  name: scc-use-nonroot-role
 rules:
   - verbs:
       - use
@@ -11,5 +11,5 @@ rules:
     resources:
       - securitycontextconstraints
     resourceNames:
-      - anyuid
+      - nonroot
 {{- end }}
